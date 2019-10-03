@@ -17,7 +17,7 @@ public class player
       //free the square the player is on before moving
       gameboard.field[this.position].occupied = false;
       
-      String message="You left the square "+ gameboard.field[this.position] +"\n";
+      String message="You left the square "+ gameboard.field[this.position-1].position +"\n";
       
       //"overflow" protection
       if(this.position+steps>gameboard.squares)
@@ -36,39 +36,39 @@ public class player
       
       //Different cases for different types of squares
       //squares with no moving properties
-		else if (gameboard.field[this.position+steps].type=="normal_square"|
-               gameboard.field[this.position+steps].type=="end_square"|
-               gameboard.field[this.position+steps].type=="start_square")
+		else if (gameboard.field[this.position+steps-1].type=="normal_square"|
+               gameboard.field[this.position+steps-1].type=="end_square"|
+               gameboard.field[this.position+steps-1].type=="start_square")
       {
          this.position+=steps;
-         message+=("You advance "+ steps + " forward");
+         message+=("You advance "+ steps + " forward \n");
       }
       //squares that are the bottom of a ladder
-      else if (gameboard.field[this.position+steps].type=="ladder_square")
+      else if (gameboard.field[this.position+steps-1].type=="ladder_square")
       {
          this.position+=steps;
-         this.position+=((ladder_square)(gameboard.field[this.position])).steps_forward;
+         this.position+=((ladder_square)(gameboard.field[this.position-1])).steps_forward;
          message+=("Good job, you landed on a ladder! \n");
       }
       //squares that are the top of a snake
-      else if (gameboard.field[this.position+steps].type=="snake_square")
+      else if (gameboard.field[this.position+steps-1].type=="snake_square")
       {
          this.position+=steps;
-         this.position-=((snake_square)(gameboard.field[this.position])).steps_back;
+         this.position-=((snake_square)(gameboard.field[this.position-1])).steps_back;
          message+=("Oh no, you landed on a snake! \n");
 
       }
       
       //after moving the player, it checks if that square is already occupied and occupies it if possible
-      if (gameboard.field[this.position].occupied == true)
+      if (gameboard.field[this.position-1].occupied == true)
       {
          this.position = 1;
          message+=("Oh no, you landed on another player! Back to square one! \n");
 
       }
-      else if (gameboard.field[this.position].type != "start_square")
+      else if (gameboard.field[this.position-1].type != "start_square")
       {
-         gameboard.field[this.position].occupied = true;
+         gameboard.field[this.position-1].occupied = true;
       }
       return message+"You are now on square "+this.position+"\n";
 	}

@@ -6,7 +6,8 @@ public class gameboard
 	square[] field;
    //generate map with random snakes/ladders
 	public gameboard(int squares) 
-	{ 
+	{  
+      System.out.println("Let the game begin! Your board looks like this: \n");
 		this.squares=squares;
       
       //calculate amount A of snake/ladders as data pairs: a=(squares-2)/3

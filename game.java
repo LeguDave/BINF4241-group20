@@ -41,7 +41,7 @@ public class game
          take_turn(this.players.get(i % this.players.size()));
          if(this.gameboard.field[this.squares-1].occupied==true)
          {
-            System.out.println("GAME OVER. "+(this.players.get(i)).name+" won");
+            System.out.println("GAME OVER \n"+this.players.get(i % this.players.size()).name+" has won the game\n");
             return;
          }
          i+=1;       

@@ -17,7 +17,7 @@ public class main
       game testgame = new game(12);
       testgame.add_player("Tim");
       testgame.add_player("David");
-      testgame.add_player("Ashly");
+      testgame.add_player("Nessy");
       testgame.run_game();
 	}
 
