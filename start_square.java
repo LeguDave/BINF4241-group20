@@ -1,11 +1,9 @@
-public class start_square
+public class start_square extends square
 {
-	int position;
-	boolean occupied;
-
 	public start_square() 
 	{ 
 		this.position = 1;
 		this.occupied = false;
+		this.type="start_square";
 	}
 }
