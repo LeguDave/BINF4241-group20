@@ -10,7 +10,6 @@ public class game
 		this.number_of_squares = number_of_squares;
 		this.number_of_players = number_of_players;
 		this.win = false;
-		this.my_gameboard=new gameboard();
-		my_gameboard.initialize(number_of_squares);
+		this.my_gameboard=new gameboard(20);
 	}
 }
