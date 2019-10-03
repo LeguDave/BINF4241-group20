@@ -1,16 +1,9 @@
 public class die
 {
-    int size;
-
-    public die()
-    {
-        this.size = 6;
-    }
-    public int roll()
+    public static int roll()
     {
         //return random integer between 1-size
-
-        return (int)(this.size*Math.random())+1;
+        return (int)(6*Math.random())+1;
     }
 }
 

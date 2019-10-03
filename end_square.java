@@ -1,6 +1,5 @@
 public class end_square extends square
 {
-
 	public end_square(int position) 
 	{ 
 		this.position = position;
