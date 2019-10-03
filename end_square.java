@@ -1,11 +1,10 @@
-public class end_square
+public class end_square extends square
 {
-	int position;
-	boolean occupied;
 
 	public end_square(int position) 
 	{ 
 		this.position = position;
 		this.occupied = false;
+		this.type="end_square";
 	}
 }
