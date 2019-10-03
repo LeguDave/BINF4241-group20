@@ -13,13 +13,15 @@ public class player
 	{
       if(this.position+steps>gameboard.squares)
       {
-         this.position += steps-(gameboard.squares-this.position)-1;
+         this.position += ((gameboard.squares-this.position)*2)-steps;
       }
       if(this.position+steps<1)
       {
          this.position = 1;
       }
-		else if (gameboard.field[this.position+steps].type=="normal_square"|gameboard.field[this.position+steps].type=="end_square"|gameboard.field[this.position+steps].type=="start_square")
+		else if (gameboard.field[this.position+steps].type=="normal_square"|
+               gameboard.field[this.position+steps].type=="end_square"|
+               gameboard.field[this.position+steps].type=="start_square")
       {
          this.position+=steps;
       }
