@@ -19,7 +19,7 @@ public class gameboard
       int indexB=0;
       
 		
-		//loop through shuffled_array: A times we will take two elements of the array for a data pair
+		//loops through shuffled_array: A times we will take two elements of the array for a data pair
 		//we alternately create ladders and snakes with the data pairs and add every time a snake/ladder + a normal square to field
 		while(A>0){
          int a;int b;
@@ -44,7 +44,7 @@ public class gameboard
          indexB=indexB+2;
          A=A-1;
       }
-      //then we will loop through the array with step = 1 and then we will assign normal squares to the rest of the positions
+      //here we will loop through the rest of the array with step = 1 and then we will assign normal squares to the rest of the positions
       while(indexB<squares-2){
          field[B[indexB]-1]=new normal_square(B[indexB]);
          indexB=indexB+1;
@@ -55,6 +55,8 @@ public class gameboard
       //create end_square
       field[squares-1]=new end_square(squares);
      
+     
+      //the entire gameboard will be printed out to inform the user how the gameboard looks like
       for(square s: field){
          if(s instanceof snake_square){
             snake_square a=(snake_square)s;

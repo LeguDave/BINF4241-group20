@@ -12,65 +12,65 @@ public class player
 	}
    
    //this function moves the player to a different position depending on the die roll
-	public String move(int steps, gameboard gameboard) 
+	public void move(int steps, gameboard gameboard) 
 	{
       //free the square the player is on before moving
-      gameboard.field[this.position].occupied = false;
+      gameboard.field[this.position-1].occupied = false;
       
-      String message="You left the square "+ gameboard.field[this.position-1].position +"\n";
+      //"underflow" protection
+      if(this.position+steps<1)
+      {
+         this.position = 1;
+         return;
+      }
+      
       
       //"overflow" protection
       if(this.position+steps>gameboard.squares)
-      {
-         this.position += ((gameboard.squares-this.position)*2)-steps;
-         //we have to call move again with step size 0 to check for snakes/ladders after moving
-         move(0,gameboard);
-         return("You overshoot the end! \n");
+      {         
+         this.move((((gameboard.squares-this.position)*2)-steps),gameboard);
+         return;      
       }
-      //"underflow" protection
-      else if(this.position+steps<1)
-      {
-         this.position = 1;
-         message+=("You went too far back and landed back on square one, what are you doing?! \n");
-      }
+      
       
       //Different cases for different types of squares
       //squares with no moving properties
-		else if (gameboard.field[this.position+steps-1].type=="normal_square"|
-               gameboard.field[this.position+steps-1].type=="end_square"|
-               gameboard.field[this.position+steps-1].type=="start_square")
+		if (gameboard.field[this.position+steps-1].type=="snake_square") //checks if snake
       {
          this.position+=steps;
-         message+=("You advance "+ steps + " forward \n");
+         System.out.println("Oh no, you landed on a snake! \n");
+         this.move(((snake_square)(gameboard.field[this.position-1])).steps_back*(-1), gameboard);
+         return;
       }
-      //squares that are the bottom of a ladder
-      else if (gameboard.field[this.position+steps-1].type=="ladder_square")
+      else if (gameboard.field[this.position+steps-1].type=="ladder_square") //checks if ladder
       {
-         this.position+=steps;
-         this.position+=((ladder_square)(gameboard.field[this.position-1])).steps_forward;
-         message+=("Good job, you landed on a ladder! \n");
+         this.position+=steps;         
+         System.out.println("Good job, you landed on a ladder! \n");
+         this.move(((ladder_square)(gameboard.field[this.position-1])).steps_forward, gameboard);
+         return;
       }
-      //squares that are the top of a snake
-      else if (gameboard.field[this.position+steps-1].type=="snake_square")
+      else
       {
          this.position+=steps;
-         this.position-=((snake_square)(gameboard.field[this.position-1])).steps_back;
-         message+=("Oh no, you landed on a snake! \n");
-
       }
       
-      //after moving the player, it checks if that square is already occupied and occupies it if possible
-      if (gameboard.field[this.position-1].occupied == true)
+      
+      if (gameboard.field[this.position-1].type=="normal_square"| //checks if normal or endsquare is occupied
+               gameboard.field[this.position-1].type=="end_square")
       {
-         this.position = 1;
-         message+=("Oh no, you landed on another player! Back to square one! \n");
-
+         if(gameboard.field[this.position-1].occupied==true) //if player x lands on another player y, player x returns to field 1
+         {
+            this.position=1;
+            System.out.println("Oh no, you landed on another player! Back to square one! \n");
+         }
+         else //else the player occupies the field he/she moved on
+         {
+            gameboard.field[this.position-1].occupied=true;
+         }
       }
-      else if (gameboard.field[this.position-1].type != "start_square")
-      {
-         gameboard.field[this.position-1].occupied = true;
-      }
-      return message+"You are now on square "+this.position+"\n";
+      
+      return;
+      
 	}
 
 }
