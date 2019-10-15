@@ -1,7 +1,7 @@
 public class piece
 {
    //standard properties of any piece
-	String colour;
+	boolean white;
    String position;
    String rank;
    

@@ -3,12 +3,12 @@ import java.util.Scanner;
 public class player
 {
 
-   String colour;
+   boolean white;
 
    //constructor
-	public player(String col) 
+	public player(boolean col) 
 	{ 
-		this.colour=col;
+		this.white=col;
 	}
    
    public void move(){

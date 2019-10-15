@@ -1,10 +1,10 @@
 public class horse extends piece{
 
    //constructor
-	public horse(String position, String colour) 
+	public horse(String position, boolean colour) 
 	{ 
 		this.position = position;
-		this.colour=colour;
+		this.white=colour;
 		this.rank="H";
 	}
    
