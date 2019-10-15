@@ -5,7 +5,7 @@ public class horse extends piece{
 	{ 
 		this.position = position;
 		this.colour=colour;
-		this.rank="horse";
+		this.rank="H";
 	}
    
    public boolean is_legal (String aim){

@@ -5,7 +5,7 @@ public class queen extends piece{
 	{ 
 		this.position = position;
 		this.colour=colour;
-		this.rank="queen";
+		this.rank="Q";
 	}
    
    public boolean is_legal (String aim){
