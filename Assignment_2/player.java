@@ -14,7 +14,9 @@ public class player
    public void move(){
       System.out.print("Enter the the position of your moving piece: ");
       Scanner scanner = new Scanner(System.in);
-      String inputString = scanner.nextLine();
-      System.out.println(inputString);
+      String inputString1 = scanner.nextLine();
+      System.out.print("Where do you want it to move? ");
+      Scanner Sconner = new Scanner(System.in);
+      String inputString2 = Sconner.nextLine();
    }
 }
