@@ -3,18 +3,20 @@ import java.util.Scanner;
 public class player
 {
 
-   String colour;
+   boolean white;
 
    //constructor
-	public player(String col) 
+	public player(boolean col) 
 	{ 
-		this.colour=col;
+		this.white=col;
 	}
    
    public void move(){
       System.out.print("Enter the the position of your moving piece: ");
       Scanner scanner = new Scanner(System.in);
-      String inputString = scanner.nextLine();
-      System.out.println(inputString);
+      String inputString1 = scanner.nextLine();
+      System.out.print("Where do you want it to move? ");
+      Scanner Sconner = new Scanner(System.in);
+      String inputString2 = Sconner.nextLine();
    }
 }

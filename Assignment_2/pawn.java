@@ -1,10 +1,10 @@
 public class pawn extends piece{
 
    //constructor
-	public pawn(String position, String colour) 
+	public pawn(String position, boolean colour) 
 	{ 
 		this.position = position;
-		this.colour=colour;
+		this.white=colour;
 		this.rank="P";
 	}
    
