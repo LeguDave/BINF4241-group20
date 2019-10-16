@@ -10,92 +10,117 @@ public class queen extends piece{
    
    public boolean is_legal (gameboard gameboard, String aim){
       int direction=8;
-      boolean is_valid;
       String next_position;
       
       while(direction>0){
-         if(direction==8){
-            next_position=gameboard.up(temporary_position);
-            //iterate in a direction until a piece, a wall or aim field is found
-            while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
+         direction-=1;
+         // here we search for the aim field in all the possible moves the queen can make
+         
+         //north
+         if(direction==7){
+            next_position=gameboard.up(this.position);
+            if(next_position==""){continue;}
+            while(gameboard.is_occupied(next_position)==False & next_position==aim){
                next_position=gameboard.up(next_position);
+               if(next_position==""){continue;}
             }
-            next_position=gameboard.up(temporary_position);
+            next_position=gameboard.up(this.position);
          }
-         else if(direction==7){
-            next_position=gameboard.up_right(temporary_position);
-            //iterate in a direction until a piece, a wall or aim field is found
-            while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
-               next_position=gameboard.up_right(next_position);
-            }
-            next_position=gameboard.up_right(temporary_position);
-         }
+         
+         //north east
          else if(direction==6){
-            next_position=gameboard.right(temporary_position);
-            //iterate in a direction until a piece, a wall or aim field is found
-            while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
-               next_position=gameboard.right(next_position);
+            next_position=gameboard.up_right(this.position);
+            if(next_position==""){continue;}
+            while(gameboard.is_occupied(next_position)==False & next_position==aim){
+               next_position=gameboard.up_right(next_position);
+               if(next_position==""){continue;}
             }
-            next_position=gameboard.right(temporary_position);
+            next_position=gameboard.up_right(this.position);
          }
+         
+         //east
          else if(direction==5){
-            next_position=gameboard.down_right(temporary_position);
-            //iterate in a direction until a piece, a wall or aim field is found
-            while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
-               next_position=gameboard.down_right(next_position);
+            next_position=gameboard.right(this.position);
+            if(next_position==""){continue;}
+            while(gameboard.is_occupied(next_position)==False & next_position==aim){
+               next_position=gameboard.right(next_position);
+               if(next_position==""){continue;}
             }
-            next_position=gameboard.down_right(temporary_position);
+            next_position=gameboard.right(this.position);
          }
+         
+         //south east
          else if(direction==4){
-            next_position=gameboard.down(temporary_position);
-            //iterate in a direction until a piece, a wall or aim field is found
-            while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
-               next_position=gameboard.down(next_position);
+            next_position=gameboard.down_right(this.position);
+            if(next_position==""){continue;}
+            while(gameboard.is_occupied(next_position)==False & next_position==aim){
+               next_position=gameboard.down_right(next_position);
+               if(next_position==""){continue;}
             }
-            next_position=gameboard.down(temporary_position);
+            next_position=gameboard.down_right(this.position);
          }
+         
+         //south
          else if(direction==3){
-            next_position=gameboard.down_left(temporary_position);
-            //iterate in a direction until a piece, a wall or aim field is found
-            while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
-               next_position=gameboard.down_left(next_position);
+            next_position=gameboard.down(this.position);
+            if(next_position==""){continue;}
+            while(gameboard.is_occupied(next_position)==False & next_position==aim){
+               next_position=gameboard.down(next_position);
+               if(next_position==""){continue;}
             }
-            next_position=gameboard.down_left(temporary_position);
+            next_position=gameboard.down(this.position);
          }
+         
+         //south west
          else if(direction==2){
-            next_position=gameboard.left(temporary_position);
-            //iterate in a direction until a piece, a wall or aim field is found
-            while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
-               next_position=gameboard.left(next_position);
+            next_position=gameboard.down_left(this.position);
+            if(next_position==""){continue;}
+            while(gameboard.is_occupied(next_position)==False & next_position==aim){
+               next_position=gameboard.down_left(next_position);
+               if(next_position==""){continue;}
             }
-            next_position=gameboard.left(temporary_position);
+            next_position=gameboard.down_left(this.position);
          }
+         
+         //west
          else if(direction==1){
-            next_position=gameboard.up_left(temporary_position);
-            //iterate in a direction until a piece, a wall or aim field is found
-            while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
-               next_position=gameboard.up_left(next_position);
+            next_position=gameboard.left(this.position);
+            if(next_position==""){continue;}
+            while(gameboard.is_occupied(next_position)==False & next_position==aim){
+               next_position=gameboard.left(next_position);
+               if(next_position==""){continue;}
             }
-            next_position=gameboard.up_left(temporary_position);
-            
+            next_position=gameboard.left(this.position);
          }
-         //check if wall is found
-         if(next_position==""){
-            direction-=1;
-            continue;
+         
+         //north west
+         else if(direction==0){
+            next_position=gameboard.up_left(this.position);
+            if(next_position==""){continue;}
+            while(gameboard.is_occupied(next_position)==False & next_position==aim){
+               next_position=gameboard.up_left(next_position);
+               if(next_position==""){continue;}
+            }
+            next_position=gameboard.up_left(this.position);
          }
+         
+         //for returning True we need either the aim field to be unoccupied or the aim field to be occupied by an enemy piece
+         
          //check if aim field is found
          if(next_position==aim){
             //is aim field occupied by an own piece?
-            if(gameboard.is_occupied(next_position) & gameboard.get_piece(next_position).white==this.white){
-               direction-=1;
-               continue;
+            if(gameboard.is_occupied(next_position)==True){
+               if(gameboard.get_piece(next_position).white!=this.white){
+                  return True;
+               }
+               else{
+                  continue;
+               }
             }
+            //empty aim field is always legal to move on
             return True;
          }
-         direction-=1;
-         continue;
       }
-      return is_valid;
-   }
-}
+      return False;
+   }//function parenthesis
+}//class parenthesis
