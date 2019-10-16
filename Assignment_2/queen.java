@@ -16,46 +16,85 @@ public class queen extends piece{
       while(direction>0){
          if(direction==8){
             next_position=gameboard.up(temporary_position);
-            //iterate in a direction until piece, a wall or aim field is found
+            //iterate in a direction until a piece, a wall or aim field is found
             while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
                next_position=gameboard.up(next_position);
             }
-            //check if wall is found
-            if(next_position==""){
-               continue;
-            }
-            //check if aim field is found
-            
-                //check if aim field is occipied
-            
-                   //if occupied check if friendly piece --> continue
-                   //else DESTROY THE CHILD and return true
-                   
-                //return true
-                
-            //continue because a found enemy cannot be killed if the aim is not the enemies field
+            next_position=gameboard.up(temporary_position);
+         }
          else if(direction==7){
-         //lööp
+            next_position=gameboard.up_right(temporary_position);
+            //iterate in a direction until a piece, a wall or aim field is found
+            while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
+               next_position=gameboard.up_right(next_position);
+            }
+            next_position=gameboard.up_right(temporary_position);
          }
          else if(direction==6){
-         //lööp
+            next_position=gameboard.right(temporary_position);
+            //iterate in a direction until a piece, a wall or aim field is found
+            while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
+               next_position=gameboard.right(next_position);
+            }
+            next_position=gameboard.right(temporary_position);
          }
          else if(direction==5){
-         //lööp
+            next_position=gameboard.down_right(temporary_position);
+            //iterate in a direction until a piece, a wall or aim field is found
+            while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
+               next_position=gameboard.down_right(next_position);
+            }
+            next_position=gameboard.down_right(temporary_position);
          }
          else if(direction==4){
-         //lööp
+            next_position=gameboard.down(temporary_position);
+            //iterate in a direction until a piece, a wall or aim field is found
+            while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
+               next_position=gameboard.down(next_position);
+            }
+            next_position=gameboard.down(temporary_position);
          }
          else if(direction==3){
-         //lööp
+            next_position=gameboard.down_left(temporary_position);
+            //iterate in a direction until a piece, a wall or aim field is found
+            while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
+               next_position=gameboard.down_left(next_position);
+            }
+            next_position=gameboard.down_left(temporary_position);
          }
          else if(direction==2){
-         //lööp
+            next_position=gameboard.left(temporary_position);
+            //iterate in a direction until a piece, a wall or aim field is found
+            while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
+               next_position=gameboard.left(next_position);
+            }
+            next_position=gameboard.left(temporary_position);
          }
          else if(direction==1){
-         //lööp
+            next_position=gameboard.up_left(temporary_position);
+            //iterate in a direction until a piece, a wall or aim field is found
+            while(gameboard.is_occupied(next_position)==False & next_position!="" & next_position!=aim){
+               next_position=gameboard.up_left(next_position);
+            }
+            next_position=gameboard.up_left(temporary_position);
+            
+         }
+         //check if wall is found
+         if(next_position==""){
+            direction-=1;
+            continue;
+         }
+         //check if aim field is found
+         if(next_position==aim){
+            //is aim field occupied by an own piece?
+            if(gameboard.is_occupied(next_position) & gameboard.get_piece(next_position).white==this.white){
+               direction-=1;
+               continue;
+            }
+            return True;
          }
          direction-=1;
+         continue;
       }
       return is_valid;
    }
