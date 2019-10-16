@@ -24,7 +24,6 @@ public class queen extends piece{
                next_position=gameboard.up(next_position);
                if(next_position==""){continue;}
             }
-            next_position=gameboard.up(this.position);
          }
          
          //north east
@@ -35,7 +34,6 @@ public class queen extends piece{
                next_position=gameboard.up_right(next_position);
                if(next_position==""){continue;}
             }
-            next_position=gameboard.up_right(this.position);
          }
          
          //east
@@ -46,7 +44,6 @@ public class queen extends piece{
                next_position=gameboard.right(next_position);
                if(next_position==""){continue;}
             }
-            next_position=gameboard.right(this.position);
          }
          
          //south east
@@ -57,7 +54,6 @@ public class queen extends piece{
                next_position=gameboard.down_right(next_position);
                if(next_position==""){continue;}
             }
-            next_position=gameboard.down_right(this.position);
          }
          
          //south
@@ -68,7 +64,6 @@ public class queen extends piece{
                next_position=gameboard.down(next_position);
                if(next_position==""){continue;}
             }
-            next_position=gameboard.down(this.position);
          }
          
          //south west
@@ -79,7 +74,6 @@ public class queen extends piece{
                next_position=gameboard.down_left(next_position);
                if(next_position==""){continue;}
             }
-            next_position=gameboard.down_left(this.position);
          }
          
          //west
@@ -90,7 +84,6 @@ public class queen extends piece{
                next_position=gameboard.left(next_position);
                if(next_position==""){continue;}
             }
-            next_position=gameboard.left(this.position);
          }
          
          //north west
@@ -101,7 +94,6 @@ public class queen extends piece{
                next_position=gameboard.up_left(next_position);
                if(next_position==""){continue;}
             }
-            next_position=gameboard.up_left(this.position);
          }
          
          //for returning True we need either the aim field to be unoccupied or the aim field to be occupied by an enemy piece
