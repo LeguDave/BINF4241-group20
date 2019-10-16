@@ -108,7 +108,7 @@ public class queen extends piece{
          
          //check if aim field is found
          if(next_position==aim){
-            //is aim field occupied by an own piece?
+            //is aim field occupied?
             if(gameboard.is_occupied(next_position)==True){
                if(gameboard.get_piece(next_position).white!=this.white){
                   return True;
