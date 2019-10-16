@@ -20,7 +20,7 @@ public class queen extends piece{
          if(direction==7){
             next_position=gameboard.up(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==False & next_position==aim){
+            while(gameboard.is_occupied(next_position)==False & next_position!=aim){
                next_position=gameboard.up(next_position);
                if(next_position==""){continue;}
             }
@@ -31,7 +31,7 @@ public class queen extends piece{
          else if(direction==6){
             next_position=gameboard.up_right(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==False & next_position==aim){
+            while(gameboard.is_occupied(next_position)==False & next_position!=aim){
                next_position=gameboard.up_right(next_position);
                if(next_position==""){continue;}
             }
@@ -42,7 +42,7 @@ public class queen extends piece{
          else if(direction==5){
             next_position=gameboard.right(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==False & next_position==aim){
+            while(gameboard.is_occupied(next_position)==False & next_position!=aim){
                next_position=gameboard.right(next_position);
                if(next_position==""){continue;}
             }
@@ -53,7 +53,7 @@ public class queen extends piece{
          else if(direction==4){
             next_position=gameboard.down_right(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==False & next_position==aim){
+            while(gameboard.is_occupied(next_position)==False & next_position!=aim){
                next_position=gameboard.down_right(next_position);
                if(next_position==""){continue;}
             }
@@ -64,7 +64,7 @@ public class queen extends piece{
          else if(direction==3){
             next_position=gameboard.down(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==False & next_position==aim){
+            while(gameboard.is_occupied(next_position)==False & next_position!=aim){
                next_position=gameboard.down(next_position);
                if(next_position==""){continue;}
             }
@@ -75,7 +75,7 @@ public class queen extends piece{
          else if(direction==2){
             next_position=gameboard.down_left(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==False & next_position==aim){
+            while(gameboard.is_occupied(next_position)==False & next_position!=aim){
                next_position=gameboard.down_left(next_position);
                if(next_position==""){continue;}
             }
@@ -86,7 +86,7 @@ public class queen extends piece{
          else if(direction==1){
             next_position=gameboard.left(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==False & next_position==aim){
+            while(gameboard.is_occupied(next_position)==False & next_position!=aim){
                next_position=gameboard.left(next_position);
                if(next_position==""){continue;}
             }
@@ -97,7 +97,7 @@ public class queen extends piece{
          else if(direction==0){
             next_position=gameboard.up_left(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==False & next_position==aim){
+            while(gameboard.is_occupied(next_position)==False & next_position!=aim){
                next_position=gameboard.up_left(next_position);
                if(next_position==""){continue;}
             }
