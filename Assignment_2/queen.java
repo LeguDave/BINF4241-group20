@@ -7,10 +7,10 @@ public class queen extends piece{
 		this.white=colour;
 		this.rank="Q";
 	}
-   /*
+   
    public boolean is_legal (gameboard gameboard, String aim){
       int direction=8;
-      String next_position;
+      String next_position="";
       
       while(direction>0){
          direction-=1;
@@ -20,7 +20,7 @@ public class queen extends piece{
          if(direction==7){
             next_position=gameboard.up(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==false && next_position!=aim){
+            while(gameboard.is_occupied(next_position)==false && (true != next_position.equals(aim))){
                next_position=gameboard.up(next_position);
                if(next_position==""){continue;}
             }
@@ -30,7 +30,7 @@ public class queen extends piece{
          else if(direction==6){
             next_position=gameboard.up_right(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==false && next_position!=aim){
+            while(gameboard.is_occupied(next_position)==false && (true != next_position.equals(aim))){
                next_position=gameboard.up_right(next_position);
                if(next_position==""){continue;}
             }
@@ -40,7 +40,7 @@ public class queen extends piece{
          else if(direction==5){
             next_position=gameboard.right(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==false && next_position!=aim){
+            while(gameboard.is_occupied(next_position)==false && (true != next_position.equals(aim))){
                next_position=gameboard.right(next_position);
                if(next_position==""){continue;}
             }
@@ -50,7 +50,7 @@ public class queen extends piece{
          else if(direction==4){
             next_position=gameboard.down_right(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==false && next_position!=aim){
+            while(gameboard.is_occupied(next_position)==false && (true != next_position.equals(aim))){
                next_position=gameboard.down_right(next_position);
                if(next_position==""){continue;}
             }
@@ -60,7 +60,7 @@ public class queen extends piece{
          else if(direction==3){
             next_position=gameboard.down(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==false && next_position!=aim){
+            while(gameboard.is_occupied(next_position)==false && (true != next_position.equals(aim))){
                next_position=gameboard.down(next_position);
                if(next_position==""){continue;}
             }
@@ -70,7 +70,7 @@ public class queen extends piece{
          else if(direction==2){
             next_position=gameboard.down_left(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==false && next_position!=aim){
+            while(gameboard.is_occupied(next_position)==false && (true != next_position.equals(aim))){
                next_position=gameboard.down_left(next_position);
                if(next_position==""){continue;}
             }
@@ -80,7 +80,7 @@ public class queen extends piece{
          else if(direction==1){
             next_position=gameboard.left(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==false && next_position!=aim){
+            while(gameboard.is_occupied(next_position)==false && (true != next_position.equals(aim))){
                next_position=gameboard.left(next_position);
                if(next_position==""){continue;}
             }
@@ -90,29 +90,31 @@ public class queen extends piece{
          else if(direction==0){
             next_position=gameboard.up_left(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==false && next_position!=aim){
+            while(gameboard.is_occupied(next_position)==false && (true != next_position.equals(aim))){
                next_position=gameboard.up_left(next_position);
                if(next_position==""){continue;}
             }
          }
          
          //for returning True we need either the aim field to be unoccupied or the aim field to be occupied by an enemy piece
-         
+         System.out.println("next position down is: "+next_position + "aim is: "+aim);
+         if(next_position==""){continue;}
          //check if aim field is found
-         if(next_position==aim){
+         if(next_position.equals(aim)){
             //is aim field occupied?
             if(gameboard.is_occupied(next_position)==true){
                if(gameboard.get_piece(next_position).white!=this.white){
                   return true;
                }
                else{
-                  continue;
+                  return false;
                }
             }
-            //empty aim field is always legal to move on
-            return true;
+            else{
+               return true;
+            }
          }
       }
       return false;
-   }*/
+   }
 }//class parenthesis

@@ -181,9 +181,10 @@ public class gameboard
    //parse coordinates to integers
    public int[] c2i(String coordinates)
    {
-      int indexes[]={0,0};
+      int[] indexes=new int[]{0,0};
 		char[] chars = coordinates.toCharArray();
-      indexes[0]=-1*(Character.getNumericValue(chars[1])-8);
+      //System.out.println("char array:"+chars[0]+" "+chars[1]);
+      indexes[0]=(-1)*(Character.getNumericValue(chars[1])-8);
       indexes[1]=Character.getNumericValue(chars[0])-10;
       return indexes;		
    }
@@ -197,7 +198,10 @@ public class gameboard
    //print board state
    public void print(){
       int i=0;
+      System.out.println("    a   b   c   d   e   f   g   h");
+
       while (i<8){
+         System.out.print(-1*(i-8)+" ");
          int j=0;
          while(j<8){
             this.field[i][j].print();
@@ -210,15 +214,22 @@ public class gameboard
    
    public boolean is_occupied(String coordinates){
    //return if square is occupied
+      if(coordinates==""){
+         return true;
+      }
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
       
       square test_this=this.field[i][j];
       if (test_this.occupied){
+         System.out.println("occupied");
+
          return true;
       }
       else{
+         System.out.println("not occupied");
          return false;
+
       }      
    }
    public boolean is_valid_piece(String coordinates, boolean white_player){
@@ -226,7 +237,7 @@ public class gameboard
    //empty square? square coordinates not valid?
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
-      square test_this=this.field[i][j];
+      piece test_this=this.field[i][j].occupied_by;
       if(test_this.white==white_player){
          if(is_valid_coordinates(i,j)){
             return true;
@@ -287,6 +298,7 @@ public class gameboard
       return "";
    }
    public String down(String coordinates){
+      System.out.println("you wanna go down");
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
       if(is_valid_coordinates(i+1,j)){
@@ -308,6 +320,7 @@ public class gameboard
       if(is_valid_coordinates(i,j+1)){
          return i2c(i,j+1);
       }
+      System.out.println("you hit wall dumbass");
       return "";
    }
    public String up_right(String coordinates){
@@ -327,6 +340,7 @@ public class gameboard
       return "";
    }
    public String down_right(String coordinates){
+      System.out.println("you want to go down right");
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
       if(is_valid_coordinates(i+1,j+1)){

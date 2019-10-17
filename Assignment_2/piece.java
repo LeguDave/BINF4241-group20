@@ -21,6 +21,10 @@ public class piece
       boolean c=this.white;
       return c;
    }
+   public boolean is_legal(gameboard gameboard, String aim){
+      return true;
+   }
+   
 }
 
 
