@@ -101,18 +101,18 @@ public class queen extends piece{
          //check if aim field is found
          if(next_position==aim){
             //is aim field occupied?
-            if(gameboard.is_occupied(next_position)==True){
+            if(gameboard.is_occupied(next_position)==true){
                if(gameboard.get_piece(next_position).white!=this.white){
-                  return True;
+                  return true;
                }
                else{
                   continue;
                }
             }
             //empty aim field is always legal to move on
-            return True;
+            return true;
          }
       }
-      return False;
+      return false;
    }//function parenthesis
 }//class parenthesis
