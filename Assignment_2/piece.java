@@ -17,8 +17,8 @@ public class piece
       return b;
    }
    
-   public String get_colour(){
-      String c=this.colour;
+   public boolean get_colour(){
+      boolean c=this.white;
       return c;
    }
 }

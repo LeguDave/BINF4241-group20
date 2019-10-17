@@ -1,10 +1,10 @@
-public  tower extends piece
+public  class tower extends piece
 {
    //constructor
-	public tower(int position, String colour) 
+	public tower(String position, boolean colour) 
 	{ 
 		this.position=position;
-      this.colour=colour;
+      this.white=colour;
 	}
    //functions here
    

@@ -1,9 +1,12 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+
 
 public class player
 {
 
    boolean white;
+   ArrayList<piece> pieces = new ArrayList<>();
 
    //constructor
 	public player(boolean col) 

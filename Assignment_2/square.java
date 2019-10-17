@@ -4,7 +4,7 @@ public class square
    //columns a-h, rows 1-8
    String coordinates;
    boolean occupied;
-   //piece occupied_by;
+   piece occupied_by;
    
 
    //constructor of the class game
@@ -19,13 +19,12 @@ public class square
    public void print()
    {
       System.out.print("[");
-      if(this.white){
-         System.out.print("w");
+      if(this.occupied){      
+         System.out.print(this.occupied_by.rank);
       }
       else{
-         System.out.print("b");
+         System.out.print(" ");
       }
-      System.out.print("-"+this.coordinates);
       System.out.print("]");
 
    }
