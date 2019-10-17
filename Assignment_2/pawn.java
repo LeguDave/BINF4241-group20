@@ -7,7 +7,6 @@ public class pawn extends piece{
 		this.white=colour;
 		this.rank="P";
 	}
-   
    public boolean is_legal (gameboard gameboard, String aim){
       String next_position;
       if(this.white){
