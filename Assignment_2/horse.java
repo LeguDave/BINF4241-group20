@@ -7,7 +7,7 @@ public class horse extends piece{
 		this.white=colour;
 		this.rank="H";
 	}
-   /*
+   
    public boolean is_legal (gameboard gameboard, String aim){
       int direction=8;
       String next_position;
@@ -72,16 +72,17 @@ public class horse extends piece{
       //check if horse moves to aim field
       if(next_position==aim){
          //is aim field occupied?
-         if(gameboard.is_occupied(next_position)==True){
+         if(gameboard.is_occupied(next_position)==true){
             if(gameboard.get_piece(next_position).white!=this.white){
-               return True;
+               return true;
             }
             else{
                continue;
             }
          }
          //empty aim field is always legal to move on
-         return True;
+         return true;
       }
-   }//function parenthesis*/
+      return false;
+   }//function parenthesis
 }
