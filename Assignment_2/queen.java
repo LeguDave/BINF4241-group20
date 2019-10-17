@@ -7,7 +7,7 @@ public class queen extends piece{
 		this.white=colour;
 		this.rank="Q";
 	}
-   
+   /*
    public boolean is_legal (gameboard gameboard, String aim){
       int direction=8;
       String next_position;
@@ -114,5 +114,5 @@ public class queen extends piece{
          }
       }
       return false;
-   }
+   }*/
 }//class parenthesis

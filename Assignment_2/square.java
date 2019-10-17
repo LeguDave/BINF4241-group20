@@ -19,11 +19,18 @@ public class square
    public void print()
    {
       System.out.print("[");
-      if(this.occupied){      
+      if(this.occupied){
+         if(this.occupied_by.white){
+            System.out.print("w");
+         }
+         else{
+            System.out.print("b");
+         }
+         
          System.out.print(this.occupied_by.rank);
       }
       else{
-         System.out.print(" ");
+         System.out.print("  ");
       }
       System.out.print("]");
 

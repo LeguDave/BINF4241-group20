@@ -99,7 +99,81 @@ public class gameboard
       
       king king_b=new king("d8",false);
       occupy_square("d8", king_b);
-      b.pieces.add(king_b);
+      b.pieces.add(king_b);      
+      
+      //create white pieces
+      pawn pawn_w_1=new pawn("a2",true);
+      occupy_square("a2", pawn_w_1);
+      w.pieces.add(pawn_w_1);
+      
+      pawn pawn_w_2=new pawn("b2",true);
+      occupy_square("b2", pawn_w_2);
+      w.pieces.add(pawn_w_2);
+      
+      pawn pawn_w_3=new pawn("c2",true);
+      occupy_square("c2", pawn_w_3);
+      w.pieces.add(pawn_w_3);
+      
+      pawn pawn_w_4=new pawn("d2",true);
+      occupy_square("d2", pawn_w_4);
+      w.pieces.add(pawn_w_4);
+      
+      pawn pawn_w_5=new pawn("e2",true);
+      occupy_square("e2", pawn_w_5);
+      w.pieces.add(pawn_w_5);
+      
+      pawn pawn_w_6=new pawn("f2",true);
+      occupy_square("f2", pawn_w_6);
+      w.pieces.add(pawn_w_6);
+      
+      pawn pawn_w_7=new pawn("g2",true);
+      occupy_square("g2", pawn_w_7);
+      w.pieces.add(pawn_w_7);
+      
+      pawn pawn_w_8=new pawn("h2",true);
+      occupy_square("h2", pawn_w_8);
+      w.pieces.add(pawn_w_8);
+      
+      tower tower_w_1=new tower("a1",true);
+      occupy_square("a1", tower_w_1);
+      w.pieces.add(tower_w_1);
+      
+      tower tower_w_2=new tower("h1",true);
+      occupy_square("h1", tower_w_2);
+      w.pieces.add(tower_w_2);
+      
+      horse horse_w_1=new horse("b1",true);
+      occupy_square("b1", horse_w_1);
+      w.pieces.add(tower_w_1);
+      
+      horse horse_w_2=new horse("g1",true);
+      occupy_square("g1", horse_w_2);
+      w.pieces.add(horse_w_2);      
+      
+      runner runner_w_1=new runner("c1",true);
+      occupy_square("c1", runner_w_1);
+      w.pieces.add(runner_w_1);
+      
+      runner runner_w_2=new runner("f1",true);
+      occupy_square("f1", runner_w_2);
+      w.pieces.add(runner_w_2);
+      
+      queen queen_w=new queen("e1",true);
+      occupy_square("e1", queen_w);
+      w.pieces.add(queen_w);
+      
+      king king_w=new king("d1",true);
+      occupy_square("d1", king_w);
+      w.pieces.add(king_w);
+      
+      //2 test queens
+      queen queen_w_test=new queen("f4",true);
+      occupy_square("f4", queen_w_test);
+      w.pieces.add(queen_w_test);
+      
+      queen queen_b_test=new queen("c5",false);
+      occupy_square("c5", queen_b_test);
+      w.pieces.add(queen_b_test);
 	
 	}
    
