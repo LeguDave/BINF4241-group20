@@ -7,7 +7,7 @@ public class horse extends piece{
 		this.white=colour;
 		this.rank="H";
 	}
-   
+   /*
    public boolean is_legal (gameboard gameboard, String aim){
       int direction=8;
       String next_position;
@@ -83,5 +83,5 @@ public class horse extends piece{
          //empty aim field is always legal to move on
          return True;
       }
-   }//function parenthesis
+   }//function parenthesis*/
 }
