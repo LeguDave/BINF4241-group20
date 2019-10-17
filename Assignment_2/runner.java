@@ -55,7 +55,7 @@ public class runner extends piece{
          }
          
          //for returning True we need either the aim field to be unoccupied or the aim field to be occupied by an enemy piece
-         
+         if(next_position==""){continue;}
          //check if aim field is found
          if(next_position==aim){
             //is aim field occupied?
