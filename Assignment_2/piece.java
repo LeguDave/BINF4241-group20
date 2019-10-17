@@ -17,10 +17,14 @@ public class piece
       return b;
    }
    
-   public String get_colour(){
-      String c=this.colour;
+   public boolean get_colour(){
+      boolean c=this.white;
       return c;
    }
+   public boolean is_legal(gameboard gameboard, String aim){
+      return true;
+   }
+   
 }
 
 

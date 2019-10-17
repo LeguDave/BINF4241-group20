@@ -1,60 +1,80 @@
-public class tower extends piece {
-	//constructor
-	public tower(String position, boolean colour)
-	{
+public  class tower extends piece
+{
+
+   //constructor
+	public tower(String position, boolean colour) 
+	{ 
 		this.position=position;
-		this.colour=colour;
-		this.rank = "T";
+      this.white=colour;
+      this.rank="T";
 	}
-	//functions here; check if the input
-	public boolean is_legal (gameboard gameboard, String aim){
-		//check if "aim" occupied and if aimed field is "is legal" for this piece
-		int direction = 8;
-		boolean is_valid;
-		String next_position;
+   public boolean is_legal (gameboard gameboard, String aim){
+      int direction=4;
+      String next_position="";
+      
+      while(direction>0){
+         direction-=1;
+         // here we search for the aim field in all the possible moves the tower can make
+         
+         //north
+         if(direction==3){
+            next_position=gameboard.up(this.position);
+            if(next_position==""){continue;}
+            while(gameboard.is_occupied(next_position)==false && next_position.equals(aim)!=true){
+               next_position=gameboard.up(next_position);
+               if(next_position==""){continue;}
+            }
+         }
+         
+         //east
+         else if(direction==2){
+            next_position=gameboard.right(this.position);
+            if(next_position==""){continue;}
+            while(gameboard.is_occupied(next_position)==false && next_position.equals(aim)!=true){
+               next_position=gameboard.right(next_position);
+               if(next_position==""){continue;}
+            }
+         }
+         
+         //south
+         else if(direction==1){
+            next_position=gameboard.down(this.position);
+            if(next_position==""){continue;}
+            while(gameboard.is_occupied(next_position)==false && next_position.equals(aim)!=true){
+               next_position=gameboard.down(next_position);
+               if(next_position==""){continue;}
+            }
+         }
+         
+         //west
+         else if(direction==0){
+            next_position=gameboard.left(this.position);
+            if(next_position==""){continue;}
+            while(gameboard.is_occupied(next_position)==false && next_position.equals(aim)!=true){
+               next_position=gameboard.left(next_position);
+               if(next_position==""){continue;}
+            }
+         }
+         
+         
+         //for returning True we need either the aim field to be unoccupied or the aim field to be occupied by an enemy piece
+         if(next_position==""){continue;}
+         //check if aim field is found
+         if(next_position.equals(aim)){
+            //is aim field occupied?
+            if(gameboard.is_occupied(next_position)==true){
+               if(gameboard.get_piece(next_position).white!=this.white){
+                  return true;
+               }
+               else{
+                  continue;
+               }
+            }
+            //empty aim field is always legal to move on
+            return true;
+         }
+      }
+      return false;
+   }
 
-		while (direction > 0) {
-			direction -=1;
-
-			if (direction==7) {
-				next_position=gameboard.up(this.position);
-				if(next_position==""){continue;}
-				while(gameboard.is_occupied(next_position)==False & next_position!=aim){
-					next_position=gameboard.up(next_position);
-					if(next_position==""){continue;}
-				}
-				next_position=gameboard.up(this.position);
-			}
-
-			else if (direction==5) {
-				next_position = gameboard.right(this.position);
-				if (next_position == "") {continue;}
-				while(gameboard.is_occupied(next_position)==False & next_position != aim) {
-					next_position = gameboard.right(next_position);
-					if (next_position == "") {continue;}
-				}
-				next_position=gameboard.right(this.position);
-			}
-
-			else if (direction==3) {
-				next_position = gameboard.down(this.position);
-				if (next_position == "") {continue;}
-				while(gameboard.is_occupied(next_position)==False & next_position != aim) {
-					next_position = gameboard.down(next_position);
-					if (next_position == "") {continue;}
-				}
-				next_position=gameboard.down(this.position);
-			}
-
-			else if (direction==1) {
-				next_position = gameboard.left(this.position);
-				if (next_position == "") {continue;}
-				while(gameboard.is_occupied(next_position)==False & next_position != aim) {
-					next_position = gameboard.left(next_position);
-					if (next_position == "") {continue;}
-				}
-				next_position=gameboard.left(this.position);
-			}
-			//is aim field reached?
-			//code...
-		}
+}
