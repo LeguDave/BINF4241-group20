@@ -9,7 +9,7 @@ public class king extends piece{
 	}
    public boolean is_legal (gameboard gameboard, String aim){
       int direction=8;
-      String next_position;
+      String next_position="";
       
       while(direction>0){
          direction-=1;
@@ -66,7 +66,7 @@ public class king extends piece{
          //for returning True we need either the aim field to be unoccupied or the aim field to be occupied by an enemy piece
          
          //check if aim field is found
-         if(next_position==aim){
+         if(next_position.equals(aim)){
             //is aim field occupied?
             if(gameboard.is_occupied(next_position)==true){
                if(gameboard.get_piece(next_position).white!=this.white){
@@ -81,6 +81,6 @@ public class king extends piece{
          }
       }
       return false;
-   }*/
+   }
 
 }

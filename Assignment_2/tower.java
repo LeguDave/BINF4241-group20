@@ -10,7 +10,7 @@ public  class tower extends piece
 	}
    public boolean is_legal (gameboard gameboard, String aim){
       int direction=4;
-      String next_position;
+      String next_position="";
       
       while(direction>0){
          direction-=1;

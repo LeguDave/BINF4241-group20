@@ -356,5 +356,18 @@ public class gameboard
       }
       return "";
    }
+   public boolean is_row(String coordinates){
+      int i=c2i(coordinates)[0];
+      int j=c2i(coordinates)[1];
+      boolean pawn_white=this.get_piece(coordinates).white;
+      if(i==6 && pawn_white){
+         return true;
+      }
+      if(i==1 && pawn_white==false){
+         return true;
+      }
+      return false;
+      
+   }
  
 }

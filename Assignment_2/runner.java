@@ -15,7 +15,7 @@ public class runner extends piece{
          direction-=1;
          // here we search for the aim field in all the possible moves the runner can make
          //north east
-         else if(direction==3){
+         if(direction==3){
             next_position=gameboard.up_right(this.position);
             if(next_position==""){continue;}
             while(gameboard.is_occupied(next_position)==false && next_position.equals(aim)!=true){
@@ -72,6 +72,6 @@ public class runner extends piece{
          }
       }
       return false;
-   }*/
+   }
 
 }
