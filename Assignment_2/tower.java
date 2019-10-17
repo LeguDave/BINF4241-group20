@@ -20,7 +20,7 @@ public  class tower extends piece
          if(direction==3){
             next_position=gameboard.up(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==false && next_position!=aim){
+            while(gameboard.is_occupied(next_position)==false && next_position.equals(aim)!=true){
                next_position=gameboard.up(next_position);
                if(next_position==""){continue;}
             }
@@ -30,7 +30,7 @@ public  class tower extends piece
          else if(direction==2){
             next_position=gameboard.right(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==false && next_position!=aim){
+            while(gameboard.is_occupied(next_position)==false && next_position.equals(aim)!=true){
                next_position=gameboard.right(next_position);
                if(next_position==""){continue;}
             }
@@ -40,7 +40,7 @@ public  class tower extends piece
          else if(direction==1){
             next_position=gameboard.down(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==false && next_position!=aim){
+            while(gameboard.is_occupied(next_position)==false && next_position.equals(aim)!=true){
                next_position=gameboard.down(next_position);
                if(next_position==""){continue;}
             }
@@ -50,7 +50,7 @@ public  class tower extends piece
          else if(direction==0){
             next_position=gameboard.left(this.position);
             if(next_position==""){continue;}
-            while(gameboard.is_occupied(next_position)==false && next_position!=aim){
+            while(gameboard.is_occupied(next_position)==false && next_position.equals(aim)!=true){
                next_position=gameboard.left(next_position);
                if(next_position==""){continue;}
             }
@@ -60,7 +60,7 @@ public  class tower extends piece
          //for returning True we need either the aim field to be unoccupied or the aim field to be occupied by an enemy piece
          if(next_position==""){continue;}
          //check if aim field is found
-         if(next_position==aim){
+         if(next_position.equals(aim)){
             //is aim field occupied?
             if(gameboard.is_occupied(next_position)==true){
                if(gameboard.get_piece(next_position).white!=this.white){
