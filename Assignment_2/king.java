@@ -73,11 +73,12 @@ public class king extends piece{
                   return true;
                }
                else{
-                  continue;
+                  return false;
                }
             }
-            //empty aim field is always legal to move on
-            return true;
+            else{//empty aim field is always legal to move on
+               return true;
+            }
          }
       }
       return false;

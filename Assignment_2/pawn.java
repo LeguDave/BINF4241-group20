@@ -43,4 +43,32 @@ public class pawn extends piece{
       }
       return false;
    }
+   
+   public boolean check(gameboard gameboard){
+      if(this.white){
+         String atk=gameboard.up_right(this.position);
+         if(gameboard.is_occupied(atk) && gameboard.get_piece(atk).white!=this.white && gameboard.get_piece(atk).rank!="K"){
+            return true;
+         }
+         atk=gameboard.up_left(this.position);
+         if(gameboard.is_occupied(atk) && gameboard.get_piece(atk).white!=this.white && gameboard.get_piece(atk).rank!="K"){
+            return true;
+         }
+      }   
+      else{
+         String atk=gameboard.down_right(this.position);
+         if(gameboard.is_occupied(atk) && gameboard.get_piece(atk).white!=this.white && gameboard.get_piece(atk).rank!="K"){
+            return true;
+         }
+         atk=gameboard.down_left(this.position);
+         if(gameboard.is_occupied(atk) && gameboard.get_piece(atk).white!=this.white && gameboard.get_piece(atk).rank!="K"){
+            return true;
+         }
+      }
+      return false;
+   }
+   
+   
+   
+   
 }

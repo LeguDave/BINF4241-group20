@@ -97,7 +97,7 @@ public class queen extends piece{
          }
          
          //for returning True we need either the aim field to be unoccupied or the aim field to be occupied by an enemy piece
-         System.out.println("next position down is: "+next_position + "aim is: "+aim);
+         
          if(next_position==""){continue;}
          //check if aim field is found
          if(next_position.equals(aim)){

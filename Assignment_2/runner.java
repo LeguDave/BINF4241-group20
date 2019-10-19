@@ -9,7 +9,7 @@ public class runner extends piece{
 	}
    public boolean is_legal (gameboard gameboard, String aim){
       int direction=4;
-      String next_position;
+      String next_position="";
       
       while(direction>0){
          direction-=1;
@@ -55,8 +55,11 @@ public class runner extends piece{
          }
          
          //for returning True we need either the aim field to be unoccupied or the aim field to be occupied by an enemy piece
-         if(next_position==""){continue;}
-         //check if aim field is found
+         
+         if(next_position==""){
+            continue;
+         }
+         //check if horse moves to aim field
          if(next_position.equals(aim)){
             //is aim field occupied?
             if(gameboard.is_occupied(next_position)==true){
@@ -64,13 +67,14 @@ public class runner extends piece{
                   return true;
                }
                else{
-                  continue;
+                  return false;
                }
             }
-            //empty aim field is always legal to move on
-            return true;
+            else{
+               return true;
+            }
          }
-      }
+      }     
       return false;
    }
 
