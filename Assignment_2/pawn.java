@@ -7,6 +7,7 @@ public class pawn extends piece{
 		this.white=colour;
 		this.rank="P";
 	}
+   //check whether the inputs are legal in context with this piece
    public boolean is_legal (gameboard gameboard, String aim){
       String next_position;
       if(this.white){
@@ -43,7 +44,7 @@ public class pawn extends piece{
       }
       return false;
    }
-   
+   //check whether this piece can attack enemy king in next turn or not
    public boolean check(gameboard gameboard){
       if(this.white){
          String atk=gameboard.up_right(this.position);
@@ -67,8 +68,4 @@ public class pawn extends piece{
       }
       return false;
    }
-   
-   
-   
-   
 }

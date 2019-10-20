@@ -7,14 +7,13 @@ public class king extends piece{
 		this.white=colour;
 		this.rank="K";
 	}
+   //check whether the inputs are legal in context with this figure and its position
    public boolean is_legal (gameboard gameboard, String aim){
       int direction=8;
       String next_position="";
-      
       while(direction>0){
          direction-=1;
          // here we search for the aim field in all the possible moves the king can make
-         
          //north
          if(direction==7){
             next_position=gameboard.up(this.position);
@@ -70,58 +69,45 @@ public class king extends piece{
       }
       return false;
    }
-   
-   
-   
+   //check whether this piece can attack enemy king in next turn or not   
    public boolean check(gameboard gameboard){
       int direction=8;
       String next_position="";
-      
       while(direction>0){
          direction-=1;
-         // here we search for the aim field in all the possible moves the king can make
-         
+         // here we search for the enemy king in all the possible moves the king can make
          //north
          if(direction==7){
             next_position=gameboard.up(this.position);
          }
-         
          //north east
          else if(direction==6){
             next_position=gameboard.up_right(this.position);
          }
-         
          //east
          else if(direction==5){
             next_position=gameboard.right(this.position);
          }
-         
          //south east
          else if(direction==4){
             next_position=gameboard.down_right(this.position);
          }
-         
          //south
          else if(direction==3){
             next_position=gameboard.down(this.position);
          }
-         
          //south west
          else if(direction==2){
             next_position=gameboard.down_left(this.position);
          }
-         
          //west
          else if(direction==1){
             next_position=gameboard.left(this.position);
          }
-         
          //north west
          else if(direction==0){
             next_position=gameboard.up_left(this.position);
          }
-         
-         
          if(next_position==""){
             continue;
          }
@@ -131,10 +117,4 @@ public class king extends piece{
       }
       return false;
    }
-
-
-
-
-
-
 }

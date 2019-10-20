@@ -8,14 +8,13 @@ public  class tower extends piece
       this.white=colour;
       this.rank="T";
 	}
+   //check whether the inputs are legal in context with this figure and its position
    public boolean is_legal (gameboard gameboard, String aim){
       int direction=4;
       String next_position="";
-      
       while(direction>0){
          direction-=1;
          // here we search for the aim field in all the possible moves the tower can make
-         
          //north
          if(direction==3){
             next_position=gameboard.up(this.position);
@@ -25,7 +24,6 @@ public  class tower extends piece
                if(next_position==""){continue;}
             }
          }
-         
          //east
          else if(direction==2){
             next_position=gameboard.right(this.position);
@@ -35,7 +33,6 @@ public  class tower extends piece
                if(next_position==""){continue;}
             }
          }
-         
          //south
          else if(direction==1){
             next_position=gameboard.down(this.position);
@@ -45,7 +42,6 @@ public  class tower extends piece
                if(next_position==""){continue;}
             }
          }
-         
          //west
          else if(direction==0){
             next_position=gameboard.left(this.position);
@@ -56,7 +52,6 @@ public  class tower extends piece
             }
          }
          //for returning True we need either the aim field to be unoccupied or the aim field to be occupied by an enemy piece
-         
          if(next_position==""){
             continue;
          }
@@ -78,15 +73,13 @@ public  class tower extends piece
       }     
       return false;
    }
-
-
+   //check whether this piece can attack enemy king in next turn or not
    public boolean check(gameboard gameboard){
       int direction=4;
       String next_position="";
       while(direction>0){
          direction-=1;
          // here we search for the enemy king in all the possible moves the tower can make
-         
          //north
          if(direction==3){
             next_position=gameboard.up(this.position);
@@ -95,7 +88,6 @@ public  class tower extends piece
                next_position=gameboard.up(next_position);
             }
          }
-         
          //east
          else if(direction==2){
             next_position=gameboard.right(this.position);
@@ -104,7 +96,6 @@ public  class tower extends piece
                next_position=gameboard.right(next_position);
             }
          }
-         
          //south
          else if(direction==1){
             next_position=gameboard.down(this.position);
@@ -113,7 +104,6 @@ public  class tower extends piece
                next_position=gameboard.down(next_position);
             }
          }
-         
          //west
          else if(direction==0){
             next_position=gameboard.left(this.position);
@@ -122,7 +112,6 @@ public  class tower extends piece
                next_position=gameboard.left(next_position);
             }
          }
-         
          if(next_position==""){
             continue;
          }

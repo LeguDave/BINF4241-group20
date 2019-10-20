@@ -78,14 +78,13 @@ public class runner extends piece{
       return false;
    }
 
-
+   //check whether this piece can attack enemy king in next turn or not
    public boolean check(gameboard gameboard){
       int direction=4;
       String next_position="";
       while(direction>0){
          direction-=1;
-         // here we search for the enemy king in all the possible moves the tower can make
-         
+         // here we search for the enemy king in all the possible moves the runner can make
          //north east
          if(direction==3){
             next_position=gameboard.up_right(this.position);
@@ -94,7 +93,6 @@ public class runner extends piece{
                next_position=gameboard.up_right(next_position);
             }
          }
-         
          //east south
          else if(direction==2){
             next_position=gameboard.down_right(this.position);
@@ -103,7 +101,6 @@ public class runner extends piece{
                next_position=gameboard.down_right(next_position);
             }
          }
-         
          //south west
          else if(direction==1){
             next_position=gameboard.down_left(this.position);
@@ -112,7 +109,6 @@ public class runner extends piece{
                next_position=gameboard.down_left(next_position);
             }
          }
-         
          //north west
          else if(direction==0){
             next_position=gameboard.up_left(this.position);
@@ -121,7 +117,6 @@ public class runner extends piece{
                next_position=gameboard.up_left(next_position);
             }
          }
-         
          if(next_position==""){
             continue;
          }
@@ -131,5 +126,4 @@ public class runner extends piece{
       }
       return false;   
    }
-
 }
