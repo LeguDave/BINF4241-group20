@@ -27,9 +27,10 @@ public class pawn extends piece{
          }
          next_position=gameboard.up_right(this.position);
          passant=gameboard.right(this.position);
+         piece Passant=gameboard.get_piece(passant);
          if(next_position==""){return false;}
          if(next_position.equals(aim)){
-            if(gameboard.is_occupied(next_position)==false && gameboard.is_occupied(passant) && gameboard.get_piece(passant).white!=this.white){
+            if(gameboard.is_occupied(next_position)==false && gameboard.is_occupied(passant) && Passant.white!=this.white && Passant.rank.equals("P") && Passant.en_passant==true){
                this.passant_killer=true;
                return true;
             }
@@ -37,9 +38,10 @@ public class pawn extends piece{
          }
          next_position=gameboard.up_left(this.position);
          passant=gameboard.left(this.position);
+         Passant=gameboard.get_piece(passant);
          if(next_position==""){return false;}
          if(next_position.equals(aim)){
-            if(gameboard.is_occupied(next_position)==false && gameboard.is_occupied(passant) && gameboard.get_piece(passant).white!=this.white){
+            if(gameboard.is_occupied(next_position)==false && gameboard.is_occupied(passant) && Passant.white!=this.white && Passant.rank.equals("P")){
                this.passant_killer=true;
                return true;
             }
@@ -60,9 +62,10 @@ public class pawn extends piece{
          }
          next_position=gameboard.down_right(this.position);
          passant=gameboard.right(this.position);
+         piece Passant=gameboard.get_piece(passant);
          if(next_position==""){return false;}
          if(next_position.equals(aim)){
-            if(gameboard.is_occupied(next_position)==false && gameboard.is_occupied(passant) && gameboard.get_piece(passant).white!=this.white){
+            if(gameboard.is_occupied(next_position)==false && gameboard.is_occupied(passant) && Passant.white!=this.white && Passant.rank.equals("P")){
                this.passant_killer=true;
                return true;
             }
@@ -70,9 +73,10 @@ public class pawn extends piece{
          }
          next_position=gameboard.down_left(this.position);
          passant=gameboard.left(this.position);
+         Passant=gameboard.get_piece(passant);
          if(next_position==""){return false;}
          if(next_position.equals(aim)){
-            if(gameboard.is_occupied(next_position)==false && gameboard.is_occupied(passant) && gameboard.get_piece(passant).white!=this.white){
+            if(gameboard.is_occupied(next_position)==false && gameboard.is_occupied(passant) && Passant.white!=this.white && Passant.rank.equals("P")){
                this.passant_killer=true;
                return true;
             }
