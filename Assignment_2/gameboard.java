@@ -177,7 +177,7 @@ public class gameboard
       //System.out.println("char array:"+chars[0]+" "+chars[1]);
       indexes[0]=(-1)*(Character.getNumericValue(chars[1])-8);
       indexes[1]=Character.getNumericValue(chars[0])-10;
-      return indexes;		
+      return indexes;
    }
    //parse integers to coordinates
    public String i2c(int i, int j){
@@ -283,7 +283,6 @@ public class gameboard
    //get adjacent squares
    
    public String up(String coordinates){
-      System.out.println("you wanna go up");
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
       if(is_valid_coordinates(i-1,j)){
@@ -292,7 +291,6 @@ public class gameboard
       return "";
    }
    public String down(String coordinates){
-      System.out.println("you wanna go down");
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
       if(is_valid_coordinates(i+1,j)){
@@ -301,7 +299,6 @@ public class gameboard
       return "";
    }
    public String left(String coordinates){
-      System.out.println("you wanna go left");
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
       if(is_valid_coordinates(i,j-1)){
@@ -310,7 +307,6 @@ public class gameboard
       return "";
    }
    public String right(String coordinates){
-      System.out.println("you wanna go right");
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
       if(is_valid_coordinates(i,j+1)){

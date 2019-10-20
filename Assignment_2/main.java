@@ -4,20 +4,18 @@ public class main
    public static void main(String args[]){ 
       player b=new player(false);
       player w=new player(true); 
-      gameboard test= new gameboard(w,b);
-      
-      test.print();
-
+      gameboard gameboard= new gameboard(w,b);
+      gameboard.print();
       while (1==1){
          System.out.println("White it's your turn!");
-         w.move(test);
-         test.print();
+         w.move(gameboard);
+         gameboard.print();
          System.out.println("Black it's your turn!");
-         b.move(test);
-         test.print();
-      }
-
-      
-        
+         b.move(gameboard);
+         gameboard.print();
+      }  
    }
 }
+
+
+//unfinished: extra regeln, checkmate, finish condition

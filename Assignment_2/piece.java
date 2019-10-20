@@ -24,7 +24,9 @@ public class piece
    public boolean is_legal(gameboard gameboard, String aim){
       return true;
    }
-   
+   public boolean check(gameboard gameboard){
+      return true;
+   }
 }
 
 

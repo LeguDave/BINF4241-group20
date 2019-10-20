@@ -172,7 +172,7 @@ public class horse extends piece{
          if(next_position==""){
             continue;
          }
-         if(gameboard.get_piece(next_position).rank=="K" && gameboard.get_piece(next_position).white!=this.white){
+         if(gameboard.is_occupied(next_position) && gameboard.get_piece(next_position).rank=="K" && gameboard.get_piece(next_position).white!=this.white){
             return true;
          }
       }     

@@ -29,7 +29,9 @@ public class player
                  gameboard.free_square(i1);
                  gameboard.occupy_square(i2,move_this);
                  move_this.position=i2;
-                 System.out.println("you moved a dingens");
+                 if(is_check(gameboard)){
+                     System.out.println("Check");
+                 }
                  break;
              }
              else{
@@ -41,4 +43,19 @@ public class player
          }
       }
    }
+   //iterate through all you own pieces to check if they can attack the enemy king in the given gameboard
+   public boolean is_check(gameboard gameboard){
+      boolean check=false;
+      
+      
+      for (int i = 0; i < this.pieces.size(); i++) {
+         if(this.pieces.get(i).check(gameboard)){
+            check=true;
+         }		
+      }
+      return check;
+   }
+   
+   
+   
 }
