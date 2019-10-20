@@ -6,20 +6,22 @@ public class game
       player w=new player(true); 
       gameboard gameboard= new gameboard(w,b);
       gameboard.print();
-      while (has_king(w)&&has_king(b)){
+      while (true){
          System.out.println("White it's your turn!");
          w.move(gameboard, b);
          gameboard.print();
+         if(has_king(b)==false){
+            System.out.println("GAME OVER, white player has won!"); 
+            break;
+         }
          System.out.println("Black it's your turn!");
          b.move(gameboard, w);
          gameboard.print();
+         if(has_king(w)==false){
+            System.out.println("GAME OVER, black player has won!"); 
+            break;
+         }
       }
-      if(has_king(w)){
-         System.out.println("GAME OVER, white player has won!");
-      } 
-      else{
-         System.out.println("GAME OVER, black player has won!");      
-      } 
    }
    public boolean has_king(player player){
       for(piece piece : player.pieces){
