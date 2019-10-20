@@ -8,5 +8,3 @@ public class main
 
 }
 
-
-//unfinished: extra regeln, checkmate, finish condition, make main->game

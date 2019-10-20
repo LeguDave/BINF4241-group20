@@ -1,5 +1,8 @@
 public class piece
 {
+   //important for en passant for pawns
+   boolean en_passant=false;
+   boolean passant_killer=false;
    //standard properties of any piece
 	boolean white;
    String position;

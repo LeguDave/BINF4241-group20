@@ -15,6 +15,7 @@ public class player
 	}
    
    public void move(gameboard gameboard, player enemy){
+      reset_passant(gameboard);
       while(true){
          System.out.print("Enter coordinates for your move: ");
          Scanner scanner = new Scanner(System.in);
@@ -28,6 +29,16 @@ public class player
                  //kill?
                  if(gameboard.get_square(i2).occupied==true){
                      gameboard.kill(i2, enemy);
+                 }
+                 else if(gameboard.get_square(i2).occupied==false  && move_this.passant_killer==true){
+                     String target;
+                     if(move_this.white){
+                        target=gameboard.down(i2);
+                     }
+                     else{
+                        target=gameboard.up(i2);
+                     }
+                     gameboard.kill(target, enemy);
                  }
                  gameboard.occupy_square(i2,move_this);
                  move_this.position=i2;
@@ -57,7 +68,14 @@ public class player
       }
       return check;
    }
-   
-   
+   //denies all own pawns the possibility to give other enemy pawns the right to kill a pawn by en_passant
+   public void reset_passant(gameboard gameboard){
+      for (int i = 0; i < this.pieces.size(); i++) {
+         if(this.pieces.get(i).rank.equals("P")){
+            this.pieces.get(i).en_passant=false;
+            this.pieces.get(i).passant_killer=false;
+         }		
+      }
+   }
    
 }

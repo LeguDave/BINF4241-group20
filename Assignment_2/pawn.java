@@ -1,6 +1,5 @@
 public class pawn extends piece{
-   boolean en_passant=false;
-   boolean passant_killer=false;
+   
    //constructor
 	public pawn(String position, boolean colour) 
 	{ 
