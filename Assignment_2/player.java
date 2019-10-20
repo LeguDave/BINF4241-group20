@@ -14,19 +14,21 @@ public class player
 		this.white=col;
 	}
    
-   public void move(gameboard gameboard){
+   public void move(gameboard gameboard, player enemy){
       while(true){
-         System.out.print("Enter the the position of your moving piece: ");
+         System.out.print("Enter coordinates for your move: ");
          Scanner scanner = new Scanner(System.in);
-         String i1 = scanner.nextLine();
-         System.out.println(i1); //debug
-         System.out.print("Where do you want it to move? ");
-         Scanner Sconner = new Scanner(System.in);
-         String i2 = Sconner.nextLine();
+         String i3 = scanner.nextLine();        
+         String i1 = i3.substring(0, 2);
+         String i2 = i3.substring(2, 4);
          if(gameboard.is_valid_piece(i1, this.white)){
              if(gameboard.get_piece(i1).is_legal(gameboard, i2)){
                  piece move_this=gameboard.get_piece(i1);
                  gameboard.free_square(i1);
+                 //kill?
+                 if(gameboard.get_square(i2).occupied==true){
+                     gameboard.kill(i2, enemy);
+                 }
                  gameboard.occupy_square(i2,move_this);
                  move_this.position=i2;
                  if(is_check(gameboard)){

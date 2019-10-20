@@ -202,6 +202,16 @@ public class gameboard
          i+=1;
       }
    }
+   public void kill(String coordinates, player player){
+      int i=c2i(coordinates)[0];
+      int j=c2i(coordinates)[1];
+      square square=this.field[i][j];
+      piece piece=get_piece(coordinates);
+      square.occupied=false;
+      square.occupied_by=null;
+      player.pieces.remove(piece);
+      piece=null;
+   }
    
    public boolean is_occupied(String coordinates){
    //return if square is occupied
