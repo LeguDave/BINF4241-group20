@@ -351,7 +351,7 @@ public class gameboard
    public String down_left(String coordinates){
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
-      if(is_valid_coordinates(i+1,j-11)){
+      if(is_valid_coordinates(i+1,j-1)){
          return i2c(i+1,j-1);
       }
       return "";
