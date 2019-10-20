@@ -16,16 +16,19 @@ public class pawn extends piece{
       if(this.white){
       //white
          next_position=gameboard.up(this.position);
-         if(next_position=="" || gameboard.is_occupied(next_position)){return false;}
-         if(next_position.equals(aim)){return true;}
+         if(next_position!="" && gameboard.is_occupied(next_position)==false){
+            if(next_position.equals(aim)){return true;}
+         }
          if(gameboard.is_row(this.position)){
             next_position=gameboard.up(next_position);
-            if(next_position=="" || gameboard.is_occupied(next_position)){return false;}
-            if(next_position.equals(aim)){
-               this.en_passant=true;
-               return true;
+            if(next_position!="" && gameboard.is_occupied(next_position)==false){
+               if(next_position.equals(aim)){
+                  this.en_passant=true;
+                  return true;
+               }
             }
          }
+         //kill up right
          next_position=gameboard.up_right(this.position);
          if(next_position!="" && next_position.equals(aim)){
             passant=gameboard.right(this.position);
@@ -36,6 +39,7 @@ public class pawn extends piece{
             }
             else if(gameboard.is_occupied(next_position) && gameboard.get_piece(next_position).white!=this.white){return true;}
          }
+         //kill up left
          next_position=gameboard.up_left(this.position);
          if(next_position!="" && next_position.equals(aim)){
             passant=gameboard.left(this.position);
@@ -50,17 +54,19 @@ public class pawn extends piece{
       //black
       else{
          next_position=gameboard.down(this.position);
-         if(next_position=="" || gameboard.is_occupied(next_position)){return false;}
-         if(next_position.equals(aim)){return true;}
+         if(next_position!="" && gameboard.is_occupied(next_position)==false){
+            if(next_position.equals(aim)){return true;}
+         }
          if(gameboard.is_row(this.position)){
             next_position=gameboard.down(next_position);
-            if(next_position=="" || gameboard.is_occupied(next_position)){return false;}
-            if(next_position.equals(aim)){
-               this.en_passant=true;
-               return true;
-            }         
-         }
-         //
+            if(next_position!="" && gameboard.is_occupied(next_position)==false){
+               if(next_position.equals(aim)){
+                  this.en_passant=true;
+                  return true;
+               }
+            }
+         }         
+         //kill down right
          next_position=gameboard.down_right(this.position);
          if(next_position!="" && next_position.equals(aim)){
             passant=gameboard.right(this.position);
@@ -72,7 +78,7 @@ public class pawn extends piece{
             else if(gameboard.is_occupied(next_position) && gameboard.get_piece(next_position).white!=this.white){return true;}
          }
         
-         //
+         //kill down left
          next_position=gameboard.down_left(this.position);
          if(next_position!="" && next_position.equals(aim)){
             passant=gameboard.left(this.position);
