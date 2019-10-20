@@ -14,6 +14,7 @@ public class pawn extends piece{
       String next_position;
       String passant;
       if(this.white){
+      //white
          next_position=gameboard.up(this.position);
          if(next_position=="" || gameboard.is_occupied(next_position)){return false;}
          if(next_position.equals(aim)){return true;}
@@ -26,10 +27,9 @@ public class pawn extends piece{
             }
          }
          next_position=gameboard.up_right(this.position);
-         passant=gameboard.right(this.position);
-         piece Passant=gameboard.get_piece(passant);
-         if(next_position==""){return false;}
-         if(next_position.equals(aim)){
+         if(next_position!="" && next_position.equals(aim)){
+            passant=gameboard.right(this.position);
+            piece Passant=gameboard.get_piece(passant);
             if(gameboard.is_occupied(next_position)==false && gameboard.is_occupied(passant) && Passant.white!=this.white && Passant.rank.equals("P") && Passant.en_passant==true){
                this.passant_killer=true;
                return true;
@@ -37,17 +37,17 @@ public class pawn extends piece{
             else if(gameboard.is_occupied(next_position) && gameboard.get_piece(next_position).white!=this.white){return true;}
          }
          next_position=gameboard.up_left(this.position);
-         passant=gameboard.left(this.position);
-         Passant=gameboard.get_piece(passant);
-         if(next_position==""){return false;}
-         if(next_position.equals(aim)){
-            if(gameboard.is_occupied(next_position)==false && gameboard.is_occupied(passant) && Passant.white!=this.white && Passant.rank.equals("P")){
+         if(next_position!="" && next_position.equals(aim)){
+            passant=gameboard.left(this.position);
+            piece Passant=gameboard.get_piece(passant);
+            if(gameboard.is_occupied(next_position)==false && gameboard.is_occupied(passant) && Passant.white!=this.white && Passant.rank.equals("P") && Passant.en_passant==true){
                this.passant_killer=true;
                return true;
             }
             else if(gameboard.is_occupied(next_position) && gameboard.get_piece(next_position).white!=this.white){return true;}
          }
       }
+      //black
       else{
          next_position=gameboard.down(this.position);
          if(next_position=="" || gameboard.is_occupied(next_position)){return false;}
@@ -60,23 +60,24 @@ public class pawn extends piece{
                return true;
             }         
          }
+         //
          next_position=gameboard.down_right(this.position);
-         passant=gameboard.right(this.position);
-         piece Passant=gameboard.get_piece(passant);
-         if(next_position==""){return false;}
-         if(next_position.equals(aim)){
-            if(gameboard.is_occupied(next_position)==false && gameboard.is_occupied(passant) && Passant.white!=this.white && Passant.rank.equals("P")){
+         if(next_position!="" && next_position.equals(aim)){
+            passant=gameboard.right(this.position);
+            piece Passant=gameboard.get_piece(passant);
+            if(gameboard.is_occupied(next_position)==false && gameboard.is_occupied(passant) && Passant.white!=this.white && Passant.rank.equals("P") && Passant.en_passant==true){
                this.passant_killer=true;
                return true;
             }
             else if(gameboard.is_occupied(next_position) && gameboard.get_piece(next_position).white!=this.white){return true;}
          }
+        
+         //
          next_position=gameboard.down_left(this.position);
-         passant=gameboard.left(this.position);
-         Passant=gameboard.get_piece(passant);
-         if(next_position==""){return false;}
-         if(next_position.equals(aim)){
-            if(gameboard.is_occupied(next_position)==false && gameboard.is_occupied(passant) && Passant.white!=this.white && Passant.rank.equals("P")){
+         if(next_position!="" && next_position.equals(aim)){
+            passant=gameboard.left(this.position);
+            piece Passant=gameboard.get_piece(passant);
+            if(gameboard.is_occupied(next_position)==false && gameboard.is_occupied(passant) && Passant.white!=this.white && Passant.rank.equals("P") && Passant.en_passant==true){
                this.passant_killer=true;
                return true;
             }
