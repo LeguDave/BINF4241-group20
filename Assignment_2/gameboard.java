@@ -1,12 +1,12 @@
-
-
+//class for gameboard and all functions concerning it
 public class gameboard
-{
+{  //8x8 grid
    square field[][]=new square[8][8];
 
-   //constructor of the class game
+   //constructor. Initiates start state of the board and all pieces
 	public gameboard(player w, player b) 
 	{  
+      //make black/white squares in the right order
       int i=0;
       while (i<8){
          int j=0;
@@ -36,7 +36,8 @@ public class gameboard
          i+=1;
       }
       
-      //creating the initial board state
+      //creating the initial state of the pieces
+      //creating black pieces
       pawn pawn_b_1=new pawn("a7",false);
       occupy_square("a7", pawn_b_1);
       b.pieces.add(pawn_b_1);
@@ -93,12 +94,12 @@ public class gameboard
       occupy_square("f8", runner_b_2);
       b.pieces.add(runner_b_2);
       
-      queen queen_b=new queen("e8",false);
-      occupy_square("e8", queen_b);
+      queen queen_b=new queen("d8",false);
+      occupy_square("d8", queen_b);
       b.pieces.add(queen_b);
       
-      king king_b=new king("d8",false);
-      occupy_square("d8", king_b);
+      king king_b=new king("e8",false);
+      occupy_square("e8", king_b);
       b.pieces.add(king_b);      
       
       //create white pieces
@@ -158,12 +159,12 @@ public class gameboard
       occupy_square("f1", runner_w_2);
       w.pieces.add(runner_w_2);
       
-      queen queen_w=new queen("e1",true);
-      occupy_square("e1", queen_w);
+      queen queen_w=new queen("d1",true);
+      occupy_square("d1", queen_w);
       w.pieces.add(queen_w);
       
-      king king_w=new king("d1",true);
-      occupy_square("d1", king_w);
+      king king_w=new king("e1",true);
+      occupy_square("e1", king_w);
       w.pieces.add(king_w);
 	
 	}
@@ -174,7 +175,6 @@ public class gameboard
    {
       int[] indexes=new int[]{0,0};
 		char[] chars = coordinates.toCharArray();
-      //System.out.println("char array:"+chars[0]+" "+chars[1]);
       indexes[0]=(-1)*(Character.getNumericValue(chars[1])-8);
       indexes[1]=Character.getNumericValue(chars[0])-10;
       return indexes;
@@ -202,6 +202,7 @@ public class gameboard
          i+=1;
       }
    }
+   //kill piece at coordinates
    public void kill(String coordinates, player player){
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
@@ -212,9 +213,16 @@ public class gameboard
       player.pieces.remove(piece);
       piece=null;
    }
-   
+   //check if a pawn is a valid target for promotion
+   public boolean promotion_valid(piece pawn){
+      int i=c2i(pawn.position)[0];
+      if(i==0 || i==7){
+         return true;
+      }
+      return false;
+   }      
+   //return if a square is occupied
    public boolean is_occupied(String coordinates){
-   //return if square is occupied
       if(coordinates==""){
          return true;
       }
@@ -229,9 +237,8 @@ public class gameboard
          return false;
       }      
    }
+   //returns if a player is allowed to "touch" a piece
    public boolean is_valid_piece(String coordinates, boolean white_player){
-   //same color as player?
-   //empty square? square coordinates not valid?
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
       if(is_valid_coordinates(i,j)==false){
@@ -254,108 +261,43 @@ public class gameboard
       }
 
    }
+   //returns if coordinates are within the bounds of the gameboard
    public boolean is_valid_coordinates(int i, int j){
       if (i<8 && i>=0 && j<8 && j>=0){
          return true;
       }
       return false;
    }
-   
+   //returns square object corresponding to coordinates
    public square get_square(String coordinates){
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
       return this.field[i][j];
    }
-   
+   //returns piece object corresponding to coordinates
    public piece get_piece(String coordinates){
-   //return piece object on coordinates
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
       square test_this=this.field[i][j];
       return test_this.occupied_by;
    }
-   public void free_square(String coordinates){
    //unoccupy a square
+   public void free_square(String coordinates){
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
       square test_this=this.field[i][j];
       test_this.occupied=false;
       test_this.occupied_by=null;
    }
+   //occupy a square with a piece
    public void occupy_square(String coordinates, piece piece){
-   //occupy a square with piece object
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
       square test_this=this.field[i][j];
       test_this.occupied=true;
       test_this.occupied_by=piece;
    }
-   //get adjacent squares
-   
-   public String up(String coordinates){
-      int i=c2i(coordinates)[0];
-      int j=c2i(coordinates)[1];
-      if(is_valid_coordinates(i-1,j)){
-         return i2c(i-1,j);
-      }
-      return "";
-   }
-   public String down(String coordinates){
-      int i=c2i(coordinates)[0];
-      int j=c2i(coordinates)[1];
-      if(is_valid_coordinates(i+1,j)){
-         return i2c(i+1,j);
-      }
-      return "";
-   }
-   public String left(String coordinates){
-      int i=c2i(coordinates)[0];
-      int j=c2i(coordinates)[1];
-      if(is_valid_coordinates(i,j-1)){
-         return i2c(i,j-1);
-      }
-      return "";
-   }
-   public String right(String coordinates){
-      int i=c2i(coordinates)[0];
-      int j=c2i(coordinates)[1];
-      if(is_valid_coordinates(i,j+1)){
-         return i2c(i,j+1);
-      }
-      return "";
-   }
-   public String up_right(String coordinates){
-      int i=c2i(coordinates)[0];
-      int j=c2i(coordinates)[1];
-      if(is_valid_coordinates(i-1,j+1)){
-         return i2c(i-1,j+1);
-      }
-      return "";
-   }
-   public String up_left(String coordinates){
-      int i=c2i(coordinates)[0];
-      int j=c2i(coordinates)[1];
-      if(is_valid_coordinates(i-1,j-1)){
-         return i2c(i-1,j-1);
-      }
-      return "";
-   }
-   public String down_right(String coordinates){
-      int i=c2i(coordinates)[0];
-      int j=c2i(coordinates)[1];
-      if(is_valid_coordinates(i+1,j+1)){
-         return i2c(i+1,j+1);
-      }
-      return "";
-   }
-   public String down_left(String coordinates){
-      int i=c2i(coordinates)[0];
-      int j=c2i(coordinates)[1];
-      if(is_valid_coordinates(i+1,j-1)){
-         return i2c(i+1,j-1);
-      }
-      return "";
-   }
+   //checks if a pawn still is in his starting row
    public boolean is_row(String coordinates){
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
@@ -369,5 +311,77 @@ public class gameboard
       return false;
       
    }
- 
+   //get adjacent squares. returns "" if square does not exist on gameboard
+   //up
+   public String up(String coordinates){
+      int i=c2i(coordinates)[0];
+      int j=c2i(coordinates)[1];
+      if(is_valid_coordinates(i-1,j)){
+         return i2c(i-1,j);
+      }
+      return "";
+   }
+   //down
+   public String down(String coordinates){
+      int i=c2i(coordinates)[0];
+      int j=c2i(coordinates)[1];
+      if(is_valid_coordinates(i+1,j)){
+         return i2c(i+1,j);
+      }
+      return "";
+   }
+   //left
+   public String left(String coordinates){
+      int i=c2i(coordinates)[0];
+      int j=c2i(coordinates)[1];
+      if(is_valid_coordinates(i,j-1)){
+         return i2c(i,j-1);
+      }
+      return "";
+   }
+   //right
+   public String right(String coordinates){
+      int i=c2i(coordinates)[0];
+      int j=c2i(coordinates)[1];
+      if(is_valid_coordinates(i,j+1)){
+         return i2c(i,j+1);
+      }
+      return "";
+   }
+   //up right
+   public String up_right(String coordinates){
+      int i=c2i(coordinates)[0];
+      int j=c2i(coordinates)[1];
+      if(is_valid_coordinates(i-1,j+1)){
+         return i2c(i-1,j+1);
+      }
+      return "";
+   }
+   //up left
+   public String up_left(String coordinates){
+      int i=c2i(coordinates)[0];
+      int j=c2i(coordinates)[1];
+      if(is_valid_coordinates(i-1,j-1)){
+         return i2c(i-1,j-1);
+      }
+      return "";
+   }
+   //down right
+   public String down_right(String coordinates){
+      int i=c2i(coordinates)[0];
+      int j=c2i(coordinates)[1];
+      if(is_valid_coordinates(i+1,j+1)){
+         return i2c(i+1,j+1);
+      }
+      return "";
+   }
+   //down left
+   public String down_left(String coordinates){
+      int i=c2i(coordinates)[0];
+      int j=c2i(coordinates)[1];
+      if(is_valid_coordinates(i+1,j-1)){
+         return i2c(i+1,j-1);
+      }
+      return "";
+   }
 }

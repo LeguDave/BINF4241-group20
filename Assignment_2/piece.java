@@ -7,6 +7,8 @@ public class piece
 	boolean white;
    String position;
    String rank;
+   //condition for castling
+   boolean moved=false;
    
    
    //here are three get methods, it is ok because the strings are returned by value and not by reference
