@@ -1,7 +1,6 @@
 public class square
 {
    boolean white;
-   //columns a-h, rows 1-8
    String coordinates;
    boolean occupied;
    piece occupied_by;
@@ -15,16 +14,16 @@ public class square
       this.occupied=false;
 	}
    
-   //function to add players
+   //print a square
    public void print()
    {
       System.out.print("[");
       if(this.occupied){
          if(this.occupied_by.white){
-            System.out.print("w");
+            System.out.print("W");
          }
          else{
-            System.out.print("b");
+            System.out.print("B");
          }
          
          System.out.print(this.occupied_by.rank);

@@ -5,7 +5,7 @@ public class runner extends piece{
 	{ 
 		this.position = position;
 		this.white=colour;
-		this.rank="R";
+		this.rank="B";
 	}
    public boolean is_legal (gameboard gameboard, String aim){
       int direction=4;

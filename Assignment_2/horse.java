@@ -5,7 +5,7 @@ public class horse extends piece{
 	{ 
 		this.position = position;
 		this.white=colour;
-		this.rank="H";
+		this.rank="N";
 	}
    
    //check whether the inputs are legal in context with this figure and its position
