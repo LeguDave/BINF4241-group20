@@ -1,18 +1,29 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Observer;
+import java.util.Observable;
 
-
-public class player
+public class player extends Observable
 {
 
    boolean white;
    ArrayList<piece> pieces = new ArrayList<>();
+   ArrayList<piece> graveyard = new ArrayList<>();
+   score score_observer=new score();
 
    //constructor
 	public player(boolean col) 
 	{ 
 		this.white=col;
+      addObserver(score_observer);
 	}
+   
+   public void update_score(ArrayList<piece> graveyard){
+      this.graveyard=graveyard;
+      setChanged();
+      notifyObservers(graveyard);
+   }
+   
    
    public void move(gameboard gameboard, player enemy, player turn_player){
       reset_passant(gameboard);
@@ -156,7 +167,8 @@ public class player
                  gameboard.free_square(i1);
                  //kill?
                  if(gameboard.get_square(i2).occupied==true){
-                     gameboard.kill(i2, enemy);
+                     gameboard.kill(i2, enemy, false);
+                     enemy.update_score(enemy.graveyard);
                  }
                  //en_passant kill?
                  else if(gameboard.get_square(i2).occupied==false  && move_this.passant_killer==true){
@@ -167,7 +179,8 @@ public class player
                      else{
                         target=gameboard.up(i2);
                      }
-                     gameboard.kill(target, enemy);
+                     gameboard.kill(target, enemy, false);
+                     enemy.update_score(enemy.graveyard);
                  }
                  //move piece
                  gameboard.occupy_square(i2,move_this);
@@ -176,7 +189,8 @@ public class player
                  if(move_this.rank.equals("P") && gameboard.promotion_valid(move_this)){
                      //kill pawn
                      String c=move_this.position;
-                     gameboard.kill(c, turn_player);                     
+                     gameboard.kill(c, turn_player, true);
+                     enemy.update_score(enemy.graveyard);                   
                      //create queen in i2
                      piece queen = new queen(c,turn_player.white);
                      //occupy square with queen

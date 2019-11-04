@@ -166,8 +166,7 @@ public class gameboard
       king king_w=new king("e1",true);
       occupy_square("e1", king_w);
       w.pieces.add(king_w);
-      
-      	
+	
 	}
    
    
@@ -204,22 +203,15 @@ public class gameboard
       }
    }
    //kill piece at coordinates
-   public void kill(String coordinates, player player, boolean friendlyfire){
+   public void kill(String coordinates, player player){
       int i=c2i(coordinates)[0];
       int j=c2i(coordinates)[1];
       square square=this.field[i][j];
       piece piece=get_piece(coordinates);
       square.occupied=false;
       square.occupied_by=null;
-      if(friendlyfire){
-         player.pieces.remove(piece);
-         piece=null;
-      }
-      else{
-         player.graveyard.add(piece);
-         player.pieces.remove(piece);
-      }
-      
+      player.pieces.remove(piece);
+      piece=null;
    }
    //check if a pawn is a valid target for promotion
    public boolean promotion_valid(piece pawn){

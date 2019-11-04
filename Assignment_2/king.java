@@ -46,6 +46,7 @@ public class king extends piece{
          else if(direction==0){
             next_position=gameboard.up_left(this.position);
          }   
+         System.out.println(next_position);
          if(next_position==""){
             continue;
          }      

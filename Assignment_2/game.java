@@ -13,8 +13,6 @@ public class game
          System.out.println("White it's your turn!");
          w.move(gameboard, b, w);
          gameboard.print();
-         System.out.print("White's score is: "); b.score_observer.print_score();
-         System.out.print("Black's score is: "); w.score_observer.print_score();
          if(has_king(b)==false){
             System.out.println("Check mate!!");
             System.out.println("White player has won!"); 
@@ -23,8 +21,6 @@ public class game
          System.out.println("Black it's your turn!");
          b.move(gameboard, w, b);
          gameboard.print();
-         System.out.print("White's score is: "); b.score_observer.print_score();
-         System.out.print("Black's score is: "); w.score_observer.print_score();
          if(has_king(w)==false){
             System.out.println("Check mate!!");
             System.out.println("Black player has won"); 
