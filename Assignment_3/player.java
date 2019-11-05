@@ -216,10 +216,57 @@ public class player extends Observable
       }
    }
    //iterate through all you own pieces to check if they can attack the enemy king in the given gameboard
+   // version with iterator
+   public interface Iterator{
+       boolean hasNext();
+       Object next();
+   }
+    public class PieceIterator implements Iterator {
+        ArrayList<piece> pieces;
+        //boolean white;
+        int position = 0;
+
+        public PieceIterator(ArrayList<piece> pieces) {
+            this.pieces = pieces;
+        }
+        public Object next(){
+            piece piece = pieces[position]
+                    this.position += 1;
+                    return piece;
+        }
+        public boolean hasNext(){
+            if (position >= pieces.size() || pieces[position] == null){
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    }
+
+    public Iterator createIterator(){
+        return new PieceIterator(pieces);
+    }
+
+    public boolean check(gameboard gameboard){
+        Iterator pieceIterator = pieces.createIterator();
+        return check2(pieceIterator,gameboard);
+	}
+	private boolean check2(Iterator iterator, gameboard){
+	    boolean check = false;
+	    while(iterator.hasNext()){
+	        piece piece = (piece)iterator.next()
+            if(piece.check(gameboard)){
+                check = true;
+            }
+        }
+	    return check;
+}
+
+
    public boolean is_check(gameboard gameboard){
       boolean check=false;
-      
-      
+
       for (int i = 0; i < this.pieces.size(); i++) {
          if(this.pieces.get(i).check(gameboard)){
             check=true;
