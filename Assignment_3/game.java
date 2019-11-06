@@ -1,5 +1,18 @@
 public class game
 {
+   private static game uniqueInstance;
+   //private constructor
+   private game(){}
+   //instance getter
+   public static game getinstance(){
+      if (uniqueInstance == null) {
+         uniqueInstance = new game();
+      }
+      return uniqueInstance;
+   }
+
+
+
    //this function runs the game until win condition is met
    public void run_game(){ 
       player b=new player(false);
