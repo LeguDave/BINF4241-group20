@@ -48,7 +48,7 @@ public class player extends Observable
                            gameboard.occupy_square("f8",tower);
                            king.position="g8";
                            king.position="f8";
-                           if(is_check(gameboard)){
+                           if(check(gameboard)){
                                 System.out.println("Check");
                            }
                            tower.moved=true;
@@ -77,7 +77,7 @@ public class player extends Observable
                            gameboard.occupy_square("f1",tower);
                            king.position="g1";
                            king.position="f1";
-                           if(is_check(gameboard)){
+                           if(check(gameboard)){
                                 System.out.println("Check");
                            }
                            tower.moved=true;
@@ -107,7 +107,7 @@ public class player extends Observable
                            gameboard.occupy_square("d8",tower);
                            king.position="c8";
                            king.position="d8";
-                           if(is_check(gameboard)){
+                           if(check(gameboard)){
                                 System.out.println("Check");
                            }
                            tower.moved=true;
@@ -134,7 +134,7 @@ public class player extends Observable
                            gameboard.occupy_square("d1",tower);
                            king.position="c1";
                            king.position="d1";
-                           if(is_check(gameboard)){
+                           if(check(gameboard)){
                                 System.out.println("Check");
                            }
                            tower.moved=true;
@@ -200,7 +200,7 @@ public class player extends Observable
                      System.out.println("Your Pawn has been promoted to Queen");
                  }
                  //check for check
-                 if(is_check(gameboard)){
+                 if(check(gameboard)){
                      System.out.println("Check!");
                  }
                  move_this.moved=true;
@@ -215,66 +215,26 @@ public class player extends Observable
          }
       }
    }
-   //iterate through all you own pieces to check if they can attack the enemy king in the given gameboard
-   // version with iterator
-   public interface Iterator{
-       boolean hasNext();
-       Object next();
+   //here an Iterator class is used to iterate through all your own pieces to check check
+   public Iterator createIterator(){
+      return new PieceIterator(pieces);
    }
-    public class PieceIterator implements Iterator {
-        ArrayList<piece> pieces;
-        //boolean white;
-        int position = 0;
 
-        public PieceIterator(ArrayList<piece> pieces) {
-            this.pieces = pieces;
-        }
-        public Object next(){
-            piece piece = pieces[position]
-                    this.position += 1;
-                    return piece;
-        }
-        public boolean hasNext(){
-            if (position >= pieces.size() || pieces[position] == null){
-                return false;
-            }
-            else {
-                return true;
-            }
-        }
-    }
-
-    public Iterator createIterator(){
-        return new PieceIterator(pieces);
-    }
-
-    public boolean check(gameboard gameboard){
-        Iterator pieceIterator = pieces.createIterator();
-        return check2(pieceIterator,gameboard);
+   public boolean check(gameboard gameboard){
+      Iterator pieceiterator = createIterator();
+      return check2(pieceiterator,gameboard);
 	}
-	private boolean check2(Iterator iterator, gameboard){
-	    boolean check = false;
-	    while(iterator.hasNext()){
-	        piece piece = (piece)iterator.next()
-            if(piece.check(gameboard)){
-                check = true;
-            }
-        }
-	    return check;
-}
-
-
-   public boolean is_check(gameboard gameboard){
-      boolean check=false;
-
-      for (int i = 0; i < this.pieces.size(); i++) {
-         if(this.pieces.get(i).check(gameboard)){
-            check=true;
-         }		
+	private boolean check2(Iterator iterator, gameboard gameboard){
+	   boolean check = false;
+	   while(iterator.hasNext()){
+	      piece piece = (piece)iterator.next();
+         if(piece.check(gameboard)){
+            check = true;
+         }
       }
-      return check;
+	   return check;
    }
-   
+
    
    //denies all own pawns the possibility to give other enemy pawns the right to kill a pawn by en_passant
    public void reset_passant(gameboard gameboard){
