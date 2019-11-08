@@ -2,7 +2,7 @@
 
 **Part I**
 
-Making the game a Singleton
+**Making the game a Singleton**
 
 _why?_
 You don't want multiple games running at the same time.
@@ -13,7 +13,7 @@ which is only creatable once as a private variable in the game class itself.-->s
 
 Class and Sequence Diagram can be found in the folder "Diagrams"
 
-Adding an Iterator to the player
+**Adding an Iterator to the player**
 
 _why?_
 In the player we found it more convenient to use an iterator than using indexes, when checking check by iterating through your pieces.
@@ -43,4 +43,27 @@ Everytime a piece is killed, the score class gets an update of the new graveyard
 
 
 _Describe valid inputs for game_
-The Inputs for the game stayed the same as in the README of Assignment 2
+The Inputs for the game stayed the same as in the README of Assignment 2:
+You have to input the field of the piece,
+that you want to move and then without whitespace the field where the piece should go.
+The program will check whether the move is legal depending on the rank of the piece,
+the position of the piece and the field, that you want to move on. If you enter an 
+invalid input, the program needs you to reenter the new valid inputs.
+The castling is the only move, where you have to enter a special input:
+	For the short castling, the input is "0-0".
+	For the long castling, the input is "0-0-0".
+   
+Example: 
+   a b c  d e f g h
+ 8 [][][][][][][BH][]
+ 7 [][][][][][][][]
+ 6 [][][][][][][][]
+ 5 [][][][][][][][]
+ 4 [][][][][][][][]
+ 3 [][][][][][][][]
+ 2 [][][][][][][][]
+ 1 [][][][][][][][WT]
+
+
+The white player wants to move his white tower from h1 to h5. The input is "h1h5".
+The black player wants to move his black horse from g8 to f6. The input is "g8f6".
