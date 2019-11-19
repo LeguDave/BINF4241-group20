@@ -1,7 +1,17 @@
+import java.util.ArrayList;
+
+
 public class smartphone
 {
-   public smartphone(player w, player b){
+   private device current_device=null;
+
+   public smartphone(){
    
-   } 
-	
+   }
+   
+   public void choose_device(device chosen){
+      this.current_device=chosen;
+      chosen.print_menu();;
+   }
+   	
 }

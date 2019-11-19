@@ -1,6 +1,15 @@
-public class oven
+public class oven extends device
 {
-   public oven(player w, player b){
+   //constructor
+   public oven(){
    
-   } 
+   }
+   //Override
+   public void switch_on(){
+   
+   }
+   //Override
+   public void switch_off(){
+   
+   }
 }

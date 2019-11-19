@@ -1,6 +1,15 @@
-public class washing_machine
+public class washing_machine extends device
 {
-   public washing_machine(player w, player b){
+   //constructor
+   public washing_machine(){
    
-   } 
+   }
+   //Override
+   public void switch_on(){
+   
+   }
+   //Override
+   public void switch_off(){
+   
+   }
 }
