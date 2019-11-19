@@ -8,13 +8,16 @@ public class user
    ArrayList<device> devices = new ArrayList<>();
    
    public user(){ 
+      //create instances
       smartphone smartphone=new smartphone();
       device cool_microwave=new microwave();
       devices.add(cool_microwave);
+      //print
       this.print_devices();
+      //get user input
       Scanner in = new Scanner(System.in);
       int input = Integer.parseInt(in.nextLine().trim());
-      
+      //chose device based on input
       smartphone.choose_device(devices.get(input));
    }
    
@@ -26,6 +29,5 @@ public class user
 			System.out.println(this.devices.get(i).name);
 		}
       System.out.println("\n");
-   
    }
 }
