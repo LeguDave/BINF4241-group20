@@ -19,6 +19,13 @@ public class user
       int input = Integer.parseInt(in.nextLine().trim());
       //chose device based on input
       smartphone.choose_device(devices.get(input));
+      //get user input
+      while(1==1){
+         Scanner in2 = new Scanner(System.in);
+         int input2 = Integer.parseInt(in2.nextLine().trim());
+         smartphone.press(input2);
+      }
+      
    }
    
    public void print_devices(){
