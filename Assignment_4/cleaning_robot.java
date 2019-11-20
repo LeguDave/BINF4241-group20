@@ -16,6 +16,13 @@ public class cleaning_robot extends device
       this.timer=0;
       
       this.name="Cleaning Robot";
+      
+      this.menu.add("Set timer");
+      this.menu.add("Check cleaning");
+      this.menu.add("Check battery");
+      this.menu.add("Check charging");
+      this.menu.add("Complete cleaning");
+      this.menu.add("Stop and return");
 
    }
    
@@ -23,7 +30,7 @@ public class cleaning_robot extends device
    public void switch_on(){
       System.out.println("you turned me on");
       //need 100% charged + needs to be in loading station
-      if(this.battery==100 && this.turned_on){
+      if(this.battery==100 && this.turned_on==false){
          this.turned_on=true;
          //update done
          //update battery

@@ -27,7 +27,7 @@ public class smartphone
       //add devices to array
       this.devices.add(this.microwave);
       this.devices.add(this.oven);
-      //this.devices.add(this.cleaning_robot);
+      this.devices.add(this.cleaning_robot);
       //this.devices.add(this.washing_machine);
       //this.devices.add(this.dishwasher);  
    
@@ -49,11 +49,15 @@ public class smartphone
       commandsO.add(new OCommandCheckTimer((oven)this.oven));
       commandsO.add(new OCommandBake((oven)this.oven));
       commandsO.add(new OCommandInterrupt((oven)this.oven));
-      
-      System.out.println(commandsO);
-
-      
+            
       //initiate CR commands
+      commandsCR.add(new CRCommandOn((cleaning_robot)this.cleaning_robot));
+      commandsCR.add(new CRCommandSetTimer((cleaning_robot)this.cleaning_robot));
+      commandsCR.add(new CRCommandCheckCleaning((cleaning_robot)this.cleaning_robot));
+      commandsCR.add(new CRCommandCheckBattery((cleaning_robot)this.cleaning_robot));
+      commandsCR.add(new CRCommandCheckCharging((cleaning_robot)this.cleaning_robot));
+      commandsCR.add(new CRCommandCompleteCleaning((cleaning_robot)this.cleaning_robot));
+      commandsCR.add(new CRCommandStopReturn((cleaning_robot)this.cleaning_robot));
       
       //initiate WM commands
       

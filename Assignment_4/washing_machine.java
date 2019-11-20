@@ -16,7 +16,7 @@ public class washing_machine extends device
    }
    //Override
    public void switch_off(){
-      this.turned_off=false;
+      this.turned_on=false;
    }
    
    public void select_degrees(){

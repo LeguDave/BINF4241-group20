@@ -21,8 +21,9 @@ public class user
       
       while(1==1){
          Scanner in2 = new Scanner(System.in);
-         int input2 = Integer.parseInt(in2.nextLine().trim());
-         smartphone.press(input2);
+3
+
+1         smartphone.press(input2);
       }
       
    }
