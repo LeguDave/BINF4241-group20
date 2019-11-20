@@ -16,11 +16,11 @@ public class device
       return this.menu;
    }
    
-   public void print_menu(){
+   public void print_menu(ArrayList menu){
       System.out.println("This is the menu of the device "+name);
-      for (int i = 0; i < this.menu.size(); i++){
+      for (int i = 0; i < menu.size(); i++){
          System.out.print("Button "+i+": ");
-			System.out.println(this.menu.get(i));
+			System.out.println(menu.get(i));
 		}
       System.out.println("\n");
    }

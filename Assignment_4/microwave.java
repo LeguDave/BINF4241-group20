@@ -4,7 +4,6 @@ public class microwave extends device
 {
    int timer=0;
    int temperature=0;
-   boolean turned_on=false;
    boolean baking=false;
    
    
@@ -30,9 +29,10 @@ public class microwave extends device
       this.temperature=0;
       this.baking=false;
       this.turned_on=false;
+      System.out.println("Microwave: turned off");
    }
    public void set_timer(){
-      if(turned_on==false){
+      if(this.turned_on==false){
          return;
       }
       System.out.println("Microwave: Set timer to?");
@@ -42,7 +42,7 @@ public class microwave extends device
       System.out.println("Microwave: Time set");
    }
    public void set_temperature(){
-      if(turned_on==false){
+      if(this.turned_on==false){
          return;
       }
       System.out.println("Microwave: Set temperature to?");
@@ -52,7 +52,7 @@ public class microwave extends device
       System.out.println("Microwave: Temperature set");
    }
    public void bake(){
-      if(turned_on==false || this.baking==true){
+      if(this.turned_on==false || this.baking==true){
          return;
       }
       if(this.temperature>0 && this.timer>0 && this.turned_on==true){
@@ -72,7 +72,7 @@ public class microwave extends device
       //cancel thread
    }
    public void check_timer(){
-      if(turned_on==false){
+      if(this.turned_on==false){
          return;
       }
       if(this.timer==0){
