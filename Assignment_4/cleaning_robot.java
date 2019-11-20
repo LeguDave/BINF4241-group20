@@ -28,18 +28,19 @@ public class cleaning_robot extends device
    
    //Override
    public void switch_on(){
-      System.out.println("you turned me on");
       //need 100% charged + needs to be in loading station
       if(this.battery==100 && this.turned_on==false){
          this.turned_on=true;
          //update done
          //update battery
+         System.out.println("You turned cleaning robot on.");
       }
       else{
+         System.out.println("wut");
          if(this.battery != 100){
             System.out.println("Cleaning robot is not charged yet.");
          }
-         if(turned_on == false){
+         if(this.turned_on){
             System.out.println("Cleaning robot is still cleaning.");
          }
       }
@@ -49,7 +50,7 @@ public class cleaning_robot extends device
    public void switch_off(){}
    
    public void set_timer(){
-      if(turned_on==true){
+      if(turned_on){
          return;
       }
       System.out.println("Cleaning Robot: Set timer to?");
@@ -75,15 +76,15 @@ public class cleaning_robot extends device
    
    public void check_charging(){
       //check if cleaning robot is charging
-      if(this.turned_on && this.battery != 100){
+      if(this.turned_on==false && this.battery != 100){
          System.out.println("Cleaning robot is charging.");
       }
       else{
          if(this.turned_on == false){
-            System.out.println("Cleaning robot is still cleaning cleaning.");
+            System.out.println("Cleaning robot is still cleaning.");
          }
          if(this.battery == 100){
-            System.out.println("Cleaning robot is full battery.");
+            System.out.println("Cleaning robot has full battery.");
          }
       }  
    }
@@ -100,6 +101,10 @@ public class cleaning_robot extends device
    
    public void stop_return(){
       //interrupts cleaning and returns to charging base 
-      this.turned_on=false;
+      if(this.turned_on){
+         this.turned_on=false;
+         System.out.println("Cleaning robot stop cleaning and return to station.");
+      }
+      System.out.println("Cleaning robot is already at station.");
    }
 }

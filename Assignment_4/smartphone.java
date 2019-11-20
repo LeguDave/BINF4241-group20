@@ -86,7 +86,10 @@ public class smartphone
       
       }
       else if(current_device.name.equals("Cleaning Robot")){
-         
+         if(i<this.commandsCR.size()&&i>=0){
+            this.c=this.commandsCR.get(i);
+            this.c.execute();
+         }
       
       }
       else if(current_device.name.equals("Oven")){
