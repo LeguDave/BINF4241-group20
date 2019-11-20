@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class cleaning_robot extends device
 {
    int timer;
@@ -30,7 +32,7 @@ public class cleaning_robot extends device
          if(this.battery != 100){
             System.out.println("Cleaning robot is not charged yet.");
          }
-         if(turned_on == false;){
+         if(turned_on == false){
             System.out.println("Cleaning robot is still cleaning.");
          }
       }
@@ -82,7 +84,7 @@ public class cleaning_robot extends device
    public void complete_cleaning(){
       //complete cleaning
       if(this.done != 100){
-         this.switch_on()
+         this.switch_on();
       }
       else{
          System.out.println("Cleaning robot is already done cleaning.");
