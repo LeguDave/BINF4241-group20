@@ -8,8 +8,6 @@ public class device
    String name="";
    boolean turned_on=false;
    int timer=0;
-   int battery=100;
-   int done=0;
    
    public device(){
       

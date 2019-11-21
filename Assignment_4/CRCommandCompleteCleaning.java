@@ -5,6 +5,6 @@ public class CRCommandCompleteCleaning implements command {
    this.cr = cr;
  }
  public void execute() {
-   cr.complete_cleaning();
+   cr.switch_on();
  }
 }
