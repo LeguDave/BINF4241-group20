@@ -41,6 +41,7 @@ public class oven extends device
       this.baking=false;
       this.turned_on=false;
       this.program="";
+      this.t.interrupt();
       System.out.println("Oven: turned off");
    }
    public void set_timer(){
@@ -74,17 +75,24 @@ public class oven extends device
 		}
       Scanner in3 = new Scanner(System.in);
       int input3 = Integer.parseInt(in3.nextLine().trim());
+      if(input3==-1){
+         System.out.println("Exit Menu");
+         this.print_menu(this.menu);
+         return;
+      }
       this.program=this.programs.get(input3);
       System.out.println("Oven: Program set to "+this.program); 
    }
    public void bake(){
-      if(this.turned_on==false || this.baking==true){
+      if(this.turned_on==false || this.t.isAlive()==true){
          return;
       }
       if(this.temperature>0 && this.timer>0 && this.turned_on==true && this.program!=""){
          System.out.println("Oven: Started baking");
          this.baking=true;         
          //start thread
+         this.t.interrupt();
+         this.t=new timer(this);
          this.t.start();
       }
       else{

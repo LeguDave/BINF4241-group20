@@ -54,14 +54,16 @@ public class microwave extends device
       System.out.println("Microwave: Temperature set");
    }
    public void bake(){
-      if(this.turned_on==false || this.baking==true){
+      if(this.turned_on==false || this.t.isAlive()==true){
          return;
       }
       if(this.temperature>0 && this.timer>0 && this.turned_on==true){
          System.out.println("Microwave: Started baking");
          this.baking=true;
          //start thread
-         t.start();
+         this.t.interrupt();
+         this.t=new timer(this);
+         this.t.start();
       }
       else{
          System.out.println("Microwave: Please set time and temperature first");

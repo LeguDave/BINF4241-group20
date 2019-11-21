@@ -9,21 +9,30 @@ public class user
    public user(){ 
       //create instance
       smartphone smartphone=new smartphone();
-      //print
-      smartphone.print_devices();
-      //get user input
-      Scanner in = new Scanner(System.in);
-      int input = Integer.parseInt(in.nextLine().trim());
-      //chose device based on input
-      smartphone.choose_device(smartphone.devices.get(input));
-      //get user input
-      
+   
+      int input;
+      int input2;
       
       while(1==1){
-         Scanner in2 = new Scanner(System.in);
-         int input2 = Integer.parseInt(in2.nextLine().trim());
-         smartphone.press(input2);
+         //print devices
+         smartphone.print_devices();
+         //get user input
+         Scanner in = new Scanner(System.in);
+         input = Integer.parseInt(in.nextLine().trim());
+         //chose device based on input
+         smartphone.choose_device(smartphone.devices.get(input));
+         //get user input
+         while(1==1){
+            Scanner in2 = new Scanner(System.in);
+            input2 = Integer.parseInt(in2.nextLine().trim());
+            if(input2==-1){
+               break;
+            }
+            smartphone.press(input2);
+         }
       }
+      
+      
       
    }
    

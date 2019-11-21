@@ -28,8 +28,8 @@ public class smartphone
       this.devices.add(this.microwave);
       this.devices.add(this.oven);
       this.devices.add(this.cleaning_robot);
-      //this.devices.add(this.washing_machine);
-      //this.devices.add(this.dishwasher);  
+      this.devices.add(this.washing_machine);
+      this.devices.add(this.dishwasher);  
    
       //initiate MW commands
       commandsMW.add(new MWCommandOn((microwave)this.microwave));
@@ -60,8 +60,21 @@ public class smartphone
       commandsCR.add(new CRCommandStopReturn((cleaning_robot)this.cleaning_robot));
       
       //initiate WM commands
+      commandsWM.add(new WMCommandOn((washing_machine)this.washing_machine));
+      commandsWM.add(new WMCommandSetProgram((washing_machine)this.washing_machine));
+      commandsWM.add(new WMCommandSetTemperature((washing_machine)this.washing_machine));
+      commandsWM.add(new WMCommandWash((washing_machine)this.washing_machine));
+      commandsWM.add(new WMCommandCheckTimer((washing_machine)this.washing_machine));
+      commandsWM.add(new WMCommandInterrupt((washing_machine)this.washing_machine));
+      commandsWM.add(new WMCommandOff((washing_machine)this.washing_machine));
       
       //initiate DW commands
+      commandsDW.add(new DWCommandOn((dishwasher)this.dishwasher));
+      commandsDW.add(new DWCommandWash((dishwasher)this.dishwasher));
+      commandsDW.add(new DWCommandSetProgram((dishwasher)this.dishwasher));
+      commandsDW.add(new DWCommandCheckTimer((dishwasher)this.dishwasher));
+      commandsDW.add(new DWCommandInterrupt((dishwasher)this.dishwasher));
+      commandsDW.add(new DWCommandOff((dishwasher)this.dishwasher));
       
       
    }
@@ -79,11 +92,16 @@ public class smartphone
          }
       }
       else if(current_device.name.equals("Dishwasher")){
-      
+         if(i<this.commandsDW.size()&&i>=0){
+            this.c=this.commandsDW.get(i);
+            this.c.execute();
+         }
       }
       else if(current_device.name.equals("Washing Machine")){
-      
-      
+         if(i<this.commandsWM.size()&&i>=0){
+            this.c=this.commandsWM.get(i);
+            this.c.execute();
+         }
       }
       else if(current_device.name.equals("Cleaning Robot")){
          if(i<this.commandsCR.size()&&i>=0){
