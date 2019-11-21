@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class king extends piece{
 
    //constructor
@@ -69,7 +71,7 @@ public class king extends piece{
       }
       return false;
    }
-   //check whether this piece can attack enemy king in next turn or not   
+   //check whether this piece can attack enemy king in next turn or not
    public boolean check(gameboard gameboard){
       int direction=8;
       String next_position="";
