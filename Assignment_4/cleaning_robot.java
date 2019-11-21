@@ -2,8 +2,12 @@ import java.util.Scanner;
 
 public class cleaning_robot extends device
 {
-   
-   
+   Thread charge = new battery(this,true);
+   Thread empty = new battery(this,false);
+   Thread t = new timer(this);
+   int battery=100;
+   int done=0;
+
    //constructor
    public cleaning_robot(){
    
@@ -16,6 +20,7 @@ public class cleaning_robot extends device
       this.menu.add("Check cleaning");
       this.menu.add("Check battery");
       this.menu.add("Check charging");
+      this.menu.add("Check Cleaning");
       this.menu.add("Complete cleaning");
       this.menu.add("Stop and return");
 
@@ -24,28 +29,32 @@ public class cleaning_robot extends device
    //Override
    public void switch_on(){
       //need 100% charged + needs to be in loading station
-      if(this.battery==100 && this.turned_on==false){
-         this.turned_on=true;
-         //update done
-         //update battery
-         System.out.println("You turned cleaning robot on.");
+      if(this.turned_on){
+         System.out.println("Cleaning robot is already running");
+         return;
       }
       else{
-         System.out.println("wut");
-         if(this.battery != 100){
-            System.out.println("Cleaning robot is not charged yet.");
-         }
-         if(this.turned_on){
-            System.out.println("Cleaning robot is still cleaning.");
-         }
+         this.turned_on=true;
+         empty.interrupt();
+         empty = new battery(this,false);
+         empty.start();
+      
+         charge.interrupt();
+      
+         t.interrupt();
+         t = new timer(this);
+         t.start();
       }
    }
    
    //Override
-   public void switch_off(){}
+   public void switch_off(){
+      return;
+   }
    
    public void set_timer(){
       if(turned_on){
+         System.out.println("You can only set time if robot is at station.");
          return;
       }
       System.out.println("Cleaning Robot: Set timer to?");
@@ -55,13 +64,9 @@ public class cleaning_robot extends device
       System.out.println("Cleaning Robot: Time set");
    }
    
-   public void time_return(){
-      //returns robot to charging station when time expires
-   }
-   
    public void check_cleaning(){
       //check percentage of cleaning
-      System.out.println("Cleaning robot has done " + done + "/100 of the cleaning work.");
+      System.out.println("Cleaning robot has done " + this.done + "/100 of the cleaning work.");
    }
    
    public void check_battery(){
@@ -71,35 +76,38 @@ public class cleaning_robot extends device
    
    public void check_charging(){
       //check if cleaning robot is charging
-      if(this.turned_on==false && this.battery != 100){
+      if(charge.isAlive()){
          System.out.println("Cleaning robot is charging.");
       }
       else{
-         if(this.turned_on == false){
-            System.out.println("Cleaning robot is still cleaning.");
-         }
-         if(this.battery == 100){
-            System.out.println("Cleaning robot has full battery.");
-         }
-      }  
-   }
-   
-   public void complete_cleaning(){
-      //complete cleaning
-      if(this.done != 100){
-         this.switch_on();
-      }
-      else{
-         System.out.println("Cleaning robot is already done cleaning.");
+         System.out.println("Cleaning robot is not charging.");
       }
    }
-   
+
    public void stop_return(){
       //interrupts cleaning and returns to charging base 
       if(this.turned_on){
          this.turned_on=false;
-         System.out.println("Cleaning robot stop cleaning and return to station.");
+         
+         
+         empty.interrupt();
+         
+         t.interrupt();
+         if(this.timer==0){
+            System.out.println("Cleaning robot stops cleaning and returns to station (time ran out or no time set).");
+         }
+         if(this.battery==0){
+            System.out.println("Cleaning robot stops cleaning and returns to station (battery is empty).");
+         }
+         if(this.done==100){
+            System.out.println("Cleaning robot stops cleaning and returns to station (cleaning is done).");
+         }
+         charge.interrupt();
+         charge = new battery(this,true);
+         charge.start();
       }
+      else{
       System.out.println("Cleaning robot is already at station.");
+      }
    }
 }

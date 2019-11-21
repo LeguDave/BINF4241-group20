@@ -56,6 +56,7 @@ public class smartphone
       commandsCR.add(new CRCommandCheckCleaning((cleaning_robot)this.cleaning_robot));
       commandsCR.add(new CRCommandCheckBattery((cleaning_robot)this.cleaning_robot));
       commandsCR.add(new CRCommandCheckCharging((cleaning_robot)this.cleaning_robot));
+      commandsCR.add(new CRCommandCheckCleaning((cleaning_robot)this.cleaning_robot));
       commandsCR.add(new CRCommandCompleteCleaning((cleaning_robot)this.cleaning_robot));
       commandsCR.add(new CRCommandStopReturn((cleaning_robot)this.cleaning_robot));
       
