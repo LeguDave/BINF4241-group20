@@ -12,7 +12,7 @@ public class timer extends Thread{
          while(this.device.timer>0){
             Thread.sleep(1000);
             this.device.timer=this.device.timer-1;
-            System.out.println(this.device.timer);
+            //System.out.println(this.device.timer);
          }
       }
       catch (InterruptedException e){
