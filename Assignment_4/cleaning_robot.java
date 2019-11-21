@@ -2,18 +2,13 @@ import java.util.Scanner;
 
 public class cleaning_robot extends device
 {
-   int timer;
-   int battery; //in percent
-   int done; //cleaning completion in percent
    
    
    //constructor
    public cleaning_robot(){
    
       this.turned_on=false;
-      this.done=0;
-      this.battery=100;
-      this.timer=0;
+
       
       this.name="Cleaning Robot";
       

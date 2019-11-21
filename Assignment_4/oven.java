@@ -1,13 +1,15 @@
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class oven extends device
 {
-   int timer=0;
    int temperature=0;
    boolean baking=false;
    String program="";
    ArrayList<String> programs = new ArrayList();
+   
+   Thread t =new timer(this);
+   
       
    
    //constructor
@@ -81,12 +83,12 @@ public class oven extends device
       }
       if(this.temperature>0 && this.timer>0 && this.turned_on==true && this.program!=""){
          System.out.println("Oven: Started baking");
-         this.baking=true;
-         //make thread
-         //bake until timer == 0 or interupted {decrement timer}
+         this.baking=true;         
+         //start thread
+         this.t.start();
       }
       else{
-         System.out.println("Oven: Please set time and temperature first");
+         System.out.println("Oven: Please set time, temperature and program first");
       }
       
    }
@@ -94,6 +96,9 @@ public class oven extends device
       this.baking=false;
       System.out.println("Oven: Interrupted");
       //cancel thread
+      this.t.interrupt();
+      
+      
    }
    public void check_timer(){
       if(this.turned_on==false){

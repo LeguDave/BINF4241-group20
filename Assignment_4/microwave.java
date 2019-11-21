@@ -2,9 +2,10 @@ import java.util.Scanner;
 
 public class microwave extends device
 {
-   int timer=0;
    int temperature=0;
    boolean baking=false;
+   
+   Thread t =new timer(this);
    
    
    //constructor
@@ -29,6 +30,7 @@ public class microwave extends device
       this.temperature=0;
       this.baking=false;
       this.turned_on=false;
+      t.interrupt();
       System.out.println("Microwave: turned off");
    }
    public void set_timer(){
@@ -58,8 +60,8 @@ public class microwave extends device
       if(this.temperature>0 && this.timer>0 && this.turned_on==true){
          System.out.println("Microwave: Started baking");
          this.baking=true;
-         //make thread
-         //bake until timer == 0 or interupted {decrement timer}
+         //start thread
+         t.start();
       }
       else{
          System.out.println("Microwave: Please set time and temperature first");
@@ -70,6 +72,7 @@ public class microwave extends device
       this.baking=false;
       System.out.println("Microwave: Interrupted");
       //cancel thread
+      t.interrupt();
    }
    public void check_timer(){
       if(this.turned_on==false){
