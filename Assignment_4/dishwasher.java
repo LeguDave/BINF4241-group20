@@ -3,8 +3,8 @@ import java.util.*;
 public class dishwasher extends device
 {
    Map<String, Integer> programs = new LinkedHashMap<>();
-   List<String> program_names = new ArrayList<>();
-   List<Integer> program_timers = new ArrayList<>();
+   List<String> program_names = null;
+   List<Integer> program_timers = null;
    boolean washing=false;
    String program_name="";
    Thread t =new timer(this);
@@ -23,9 +23,9 @@ public class dishwasher extends device
       this.programs.put("Pans", 30);
       this.programs.put("Mixed", 40);
       //get program_name
-      this.program_names = (ArrayList)programs.keySet();      
+      this.program_names = new ArrayList<String>(programs.keySet());      
       //get program_timer
-      this.program_timers = (ArrayList)programs.values();
+      this.program_timers = new ArrayList<Integer>(programs.values());
    }
    //Override
    public void switch_on(){
@@ -38,7 +38,7 @@ public class dishwasher extends device
       this.turned_on=false;
       this.washing=false;
       this.program_name="";
-      t.interrupt();
+      this.t.interrupt();
       System.out.println("Dishwasher: turned off");
    }
    public void check_timer(){
@@ -63,6 +63,11 @@ public class dishwasher extends device
       
       Scanner in3 = new Scanner(System.in);
       int input3 = Integer.parseInt(in3.nextLine().trim());
+      if(input3==-1){
+         System.out.println("Exit Menu");
+         this.print_menu(this.menu);
+         return;
+      }
       
       this.program_name=this.program_names.get(input3);
       this.timer=this.program_timers.get(input3);
@@ -77,14 +82,16 @@ public class dishwasher extends device
       t.interrupt();
    }
    public void wash(){
-      if(this.turned_on==false || this.washing==true){
+      if(this.turned_on==false || this.t.isAlive()==true){
          return;
       }
       if(this.program_name!="" && this.timer>0){
          System.out.println("Dishwasher: Started washing");
          this.washing=true;
          //start thread
-         t.start();
+         this.t.interrupt();
+         this.t=new timer(this);
+         this.t.start();
       }
       else{
          System.out.println("Dishwasher: Please choose a program first");

@@ -17,6 +17,8 @@ public class timer extends Thread{
       }
       catch (InterruptedException e){
          //System.out.println("Timer Interrupted");
+         //Thread.currentThread().interrupt();
+         return;
       }   
    }
 }

@@ -8,6 +8,7 @@ public class device
    String name="";
    boolean turned_on=false;
    int timer=0;
+
    
    public device(){
       
@@ -23,7 +24,7 @@ public class device
          System.out.print("Button "+i+": ");
 			System.out.println(menu.get(i));
 		}
-      System.out.println("\n");
+      System.out.println("Press -1 to exit to the devices menu");
    }
    
    public void switch_on(){
