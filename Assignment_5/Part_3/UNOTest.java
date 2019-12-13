@@ -19,8 +19,11 @@ public class UNOTest {
     game game = new game();
   }
 
-   //checks if game can check correctly the amount of players
-
+  /**
+   * This method creates several instances of the game class with varying numbers.
+   * The method checkamountfplayer() should correctly return a boolean, depending on 
+   * whether the amount of players is legal.
+  */
   @Test
   public void TESTcheckamountofplayers() {
     Assert.assertTrue(new game(2).checkamountofplayers());
@@ -30,9 +33,11 @@ public class UNOTest {
     Assert.assertFalse(new game(-1).checkamountofplayers());
     Assert.assertFalse(new game(11).checkamountofplayers());
   }
-
-   //checks if deck detects an empty drawpile, shuffles correctly and if deck detects a not empty deck
-
+  
+  /**
+   * This method checks if the deck can detect an empty/non-empty drawpile.
+   * This method also checks if the deck shuffles successfully.
+  */
   @Test
   public void TESTshuffleEmptyDeck() {
     deck Deck = new deck();
@@ -48,9 +53,9 @@ public class UNOTest {
     Assert.assertEquals((Deck.discardpile).size(),1);
   }
   
-  
-  //check if a card can be drawn from deck
-  
+  /**
+   * This method checks if a player can draw a card and add it to his/her hand.
+  */
   @Test
   public void TESTdraw() {
     deck Deck = new deck();
@@ -61,8 +66,9 @@ public class UNOTest {
     Assert.assertTrue(Player.checkUNO);
   }
   
-   //check if cards can be successfully added from hand to discard pile
-  
+  /**
+   * This method checks if a card from a players hand can successfully be transfered to the discard pile.
+  */
   @Test
   public void TESTcardtransfer() {
     deck Deck = new deck();
@@ -77,8 +83,9 @@ public class UNOTest {
   }
   
   
-  //checks if player can detect empty hand correctly
-  
+  /**
+   * This method checks if the player can detect an empty hand.
+  */  
   @Test
   public void TESTemptyhand() {
     deck Deck = new deck();
@@ -89,8 +96,9 @@ public class UNOTest {
     Assert.assertFalse(Player.hasnocards());
   }
   
-  //check if player can detect UNO in his hand
-  
+  /**
+   * This method checks if a player can detect UNO in his/her hand.
+  */
   @Test
   public void TESThandUNO() {
     deck Deck = new deck();
@@ -104,9 +112,11 @@ public class UNOTest {
   }
   
   
-  //check if player and deck can detect an illegal play (not matching cards)
-  //checking on colour and number
-  
+  /**
+   * This method checks if player and the deck can detect an illegal move.
+   * Four instances of normal cards will be created and one will be played on the discardpile.
+   * Now both player and deck will be checked if they can detect a move to be legal or not by a given card.
+  */
   @Test
   public void TESTillegalplay() {
     deck Deck = new deck();
@@ -129,8 +139,9 @@ public class UNOTest {
     Assert.assertTrue(Player.isplaypossible());
   }
   
-   //checks getter methods of card class
-
+  /**
+   * This method checks if the getter methods of the card classs work.
+  */
   @Test
   public void TESTcardgetter() {
     
@@ -146,8 +157,9 @@ public class UNOTest {
   }
   
   
-  //check effect of draw penalty cards
-  
+  /**
+   * This method checks if the draw penalty card's effect actually lets a player draw cards.
+  */
   @Test
   public void TESTdrawpenalty() {
     deck Deck = new deck();
@@ -164,9 +176,9 @@ public class UNOTest {
     Assert.assertEquals((Deck.drawpile).size(),101); 
   }
   
-  
-  //checks effect of changedirectioncard
-  
+  /**
+   * This method checks if the effect of the changedirectioncard changes the boolean clockwise in the game class.
+  */
   @Test
   public void TESTdirectioncard() {
     deck Deck = new deck();
@@ -178,8 +190,9 @@ public class UNOTest {
     Assert.assertFalse(game.clockwise);
   }
   
-  //checks if colour can be set successfully of wildcards
-  
+  /**
+   * This method checks if the setcolour method of the wildcards change the wild cards colour.
+  */
   @Test
   public void TESTwildcardcolour() {
     deck Deck = new deck();
