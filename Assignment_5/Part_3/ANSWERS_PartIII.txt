@@ -1,0 +1,16 @@
+When the main class is run:
+1.User will be asked to input the amount X (2-10) of players. -->program asks again if X is not element of [2,10]
+2.The programm shows the players hand, whose turn it is. It also displays the top card of the discardpile. When this
+	card is a specialeffectcard of instance skipcard, drawtwocard, changedirectioncard or a wilddrawfour. The game will
+	cast the effect of the showing card to the current player.
+3.Now the player can input 1 or 2. 1 for playing a card from his/her hand. 2 for drawing a card. -->player has to input again,
+	if the player tried to input 1, while he/she can not play a card.
+4.If in step 3, 1 could be inputted successfully, the player can now input the index of the previous shown card of the hand.
+5.The chosen card will be inputted in the ismatchincard from the deck to check if the card matches the top card of the 
+	discard pile. If yes, then the card will be played successfully.
+6. At the end of the turn, the game call the method in player to check UNO. Then the game looks at the top card of the discard
+	pile. If the colour is NULL, then the player can choose the colour, that the next player has to play. The card's colour
+	will be changed to that colour. Now it will be checked if the draw pile is empty by calling isempty method of the deck.
+	If the draw pile is empty the shuffle method of the deck class will be called in the game and by doing so, the discard
+	pile will be shuffled and then transferred to the draw pile. Also all wild card's colour will be reset to NULL.
+7. Steps 2 to 6 will be repeated until someone has zero cards, then the player with zero card wins and the program ends.
