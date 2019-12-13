@@ -4,8 +4,6 @@ public class gameboard
 {
 	int squares;
 	square[] field;
- 
-   
    //generate map with random snakes/ladders
 	public gameboard(int squares) 
 	{  
